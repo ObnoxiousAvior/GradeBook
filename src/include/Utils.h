@@ -1,43 +1,17 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 #include <vector>
 
 namespace utils
 {
-	template <typename T> void queryVar(T& var){
+	template <typename T> inline void queryVar(T& var){
 		std::cin >> var;
 		while(getchar()!='\n');
 	}
 	
-	template <typename T> bool checkInt(T var)
-	{
-		std::cout << "Please" << std::endl;
-		if (std::is_same<T, int>::value)
-		{
-			if (var < 0) return false;
-		}
-		else
-		{
-			return false;
-		}
-		
-		return true;
-	}
-	
-	void queryInt(int& var, std::string text){
-		while(true){
-		std::cout << text << std::endl << "|";
-		
-		queryVar(var);
-		
-		if(!checkInt(var)) 
-		{
-			std::cout << "Please, enter the NON-NEGATIVE INTEGER value! (0,1,2,3....)" << std::endl;
-			continue;
-		}
-		break;
-		}
-	}
+	void queryMark(int& var, std::string text);
 	
 	template <typename T>
 	int acc_log_in(T userList)
@@ -80,7 +54,8 @@ namespace utils
 			} 
 			else std::cout << "Wrong password. Try again!" << std::endl;
 	}
-		
+	
+	system("clear");
 	return accID;
 }
 

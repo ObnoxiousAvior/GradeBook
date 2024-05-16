@@ -4,7 +4,7 @@ SDIR = src
 OUT = app
 
 
-_OBJS = main.o subject.o modes.o users.o
+_OBJS = main.o subject.o modes.o users.o utils.o
 OBJS = $(patsubst %,$(ODIR)/%,$(_OBJS))
 
 $(ODIR)/%.o: $(SDIR)/%.cpp 

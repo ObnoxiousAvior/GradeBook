@@ -20,22 +20,21 @@ class Tutor : public User
 {
 	std::string fullName;
 	Subject& subject;
-	std::vector<std::string> studentGroups;
+	std::vector<std::string> studentGroups = {"0"};
 public:
-	Tutor(std::string name, Subject sub, std::vector<std::string> groups, std::string log, std::string pass) : fullName(name), subject(sub), studentGroups(groups)
+	Tutor(std::string name, Subject& sub, std::vector<std::string> groups, std::string log, std::string pass) : fullName(name), subject(sub)
 	{
+		for(int i=0; i<groups.size(); i++) studentGroups.push_back(groups[i]);
 		login = log;
 		password = pass;
 	};
-	
-		std::string getFullName();
+		std::string getFullName() {return fullName;};
+		std::string getSub() {return subject.getSubName();};
+		std::vector<std::string> getGroupVec() {return studentGroups;};
 		
-		int getName(){return 1;};
-		
+		void printGroupGrades(std::vector<Student> studentList);
 		void printStudentGrades(std::vector<Student> studentList);
 		void gradeStudent();
-		
-		std::string getLogin(){return login;};
 };
 
 
@@ -51,12 +50,24 @@ public:
 	
 	std::string getName();
 	
-	void addGroups(std::vector<std::string>& groupList);
+	void add(std::vector<Student>& studentList, std::vector<std::string>& groupList);
+	void add(std::vector<std::string>& groupList);
+	void add(std::vector<Tutor>& tutorList, std::vector<std::string>& groupList, std::vector<Subject>& subjectList);
+	void add(std::vector<Admin>& adminList);
 	
-	void printStudents(std::vector<Student> studentList);
-	void addStudents(std::vector<Student>& studentList, std::vector<std::string>& groupList);
+	void removeStudent(std::vector<Student>& studentList);
+	void editStudent(std::vector<Student>& studentList, std::vector<std::string>& groupList);
+	
+	void editGroup(std::vector<Student>& studentList, std::vector<std::string>& groupList);
+	
+	void debugLoadDefault(std::vector<Subject>& subjectList, std::vector<Student>& studentList, std::vector<Tutor>& tutorList, std::vector<std::string>& groupList);
 };
 
+void print(std::vector<Student> studentList);
+void print(std::vector<std::string> groupList);
+void print(std::vector<Tutor> tutorList);
+void print(std::vector<Admin> adminList);
 
+void INIT_VECTORS(std::vector<Tutor>& tutorList, std::vector<Student>& studentList, std::vector<Subject>& subjectList, std::vector<Admin>& adminList, std::vector<std::string>& groupList);
 
 

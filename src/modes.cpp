@@ -3,16 +3,24 @@
 #include "include/Modes.h"
 #include "include/Users.h"
 #include "include/Utils.h"
+#include "include/interface.h"
 
 using namespace std;
+using namespace interface;
 
 void studentMode(vector<Student> studentList, vector<Subject> subjectList, vector<string> groupList)
 {
-	cout << "You're now using the GradeBook as a student!" << endl << "=========================================" << endl << "Groups: " << endl;
+    cout << "+-----------------------------------------------------+" << endl;
+    cout << "|    You're now using the GradeBook as a student!     |" << endl;
+    cout << "+-----------------------------------------------------+" << endl;
+    cout << "| Groups:                                             |" << endl;
 	
 	print(groupList);
 	
-	cout <<"Please, select the group you're studying in: ";
+    cout << "+-----------------------------------------------------+" << endl;
+    cout << "|    Please, select the group you're studying in:     |" << endl;;
+    cout << "+-----------------------------------------------------+" << endl;
+    cout << "> ";
 	
 	int groupID;
 	utils::queryVar(groupID);
@@ -46,15 +54,8 @@ void tutorMode(vector<Student>& studentList,vector<Subject>& subjectList,vector<
 	while (keepCycle)
 	{
 	
-	cout << "Welcome, " << currentTutor.getFullName() << "!" << endl 
-		<< "=========================================" << endl 
-		<< "You're now using the GradeBook as a tutor!" << endl 
-		<< "=========================================" << endl 
-		<< "What would you like to do?" << endl
-		<< "1. Print student's grades on your subject" << endl
-		<< "2. Print group's grades on your subject" << endl
-		<< "3. Grade a student" << endl
-		<< "| ";
+    // interface for Tutor
+    greetingToTutor();
 		
 	
 	int select;
@@ -90,35 +91,10 @@ void adminMode(vector<Student>& studentList,vector<Subject>& subjectList,vector<
 	while (keepCycle)
 	{
 	
-	cout << "=========================================" << endl 
-		<< "Welcome, " << currentAdmin.getName() << "!" << endl 
-		<< "=========================================" << endl 
-		<< "You're now using the GradeBook as an admin!" << endl 
-		<< "=========================================" << endl 
-		<< "What would you like to do?" << endl
-		<< "1. Print student list" << endl
-		<< "2. Add students" << endl
-		<< "3. Remove a student" << endl
-		<< "4. Edit student's info" << endl 
-		<< endl
-		<< "5. Print groups" << endl
-		<< "6. Add groups" << endl
-		<< "7. Remove group" << endl 
-		<< "8. Edit group" << endl
-		<< endl
-		<< "9. Print tutor list" << endl
-		<< "10. Add tutors" << endl
-		<< "11. Remove a tutor" << endl
-		<< "12. Edit tutor's info" << endl 
-		<< endl
-		<< "13. Print admin list" << endl
-		<< "14. Add admin" << endl
-		<< "15. Remove this admin account" << endl
-		<< endl
-		<< "16. Save progress" << endl;
+    // interface for admin
+    greetingToAdmin();
 		
 		
-	
 	int select;
 	cin >> select;
 	

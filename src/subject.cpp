@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "include/Platform.h"
 #include "include/Student.h"
 #include "include/Subject.h"
 #include "include/Utils.h"
@@ -59,7 +60,7 @@ void Subject::printGrades(int studentID, int mode)
 
 void Subject::grade(string groupName)
 {
-	system("clear");
+	system(CLEARSCR);
 	printGroup(groupName);
 
 	cout << "Which student would you like to give a mark to?\n|";
@@ -67,7 +68,7 @@ void Subject::grade(string groupName)
 	int select;
 	utils::queryVar(select);
 	
-	system("clear");
+	system(CLEARSCR);
 	
 	cout << "Type in the mark to give to " << vecStudent[select].fullName << " (An integer from 2 to 5)" << endl << "| ";
 	
@@ -76,13 +77,13 @@ void Subject::grade(string groupName)
 
 	gradeVec[select].push_back(gradeNum);
 	
-	system("clear");
+	system(CLEARSCR);
 	
 	printGrades(select, GENERAL_USE);
 }
 	
 void Subject::updateGradeVec()
 {
-	vector<int> temp = {0};
+	vector<int> temp = {1};
 	gradeVec.resize(vecStudent.size(), temp);
 }

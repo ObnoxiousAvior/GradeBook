@@ -12,8 +12,11 @@ void studentMode(std::vector<Student> studentList,
 					  std::vector<Subject> subjectList,
 					  std::vector<std::string> groupList);
 
-void tutorMode(std::vector<Student> studentList,
-					std::vector<Tutor> tutorList);
+void tutorMode(std::vector<Student>& studentList,
+					std::vector<Subject>& subjectList,
+					std::vector<Tutor>& tutorList,
+					std::vector<Admin>& adminList,
+					std::vector<std::string>& groupList);
 
 void adminMode(std::vector<Student>& studentList,
 					std::vector<Subject>& subjectList,

@@ -1,3 +1,4 @@
+#include "include/Platform.h"
 #include "include/Student.h"
 #include "include/Modes.h"
 #include "include/Users.h"
@@ -35,7 +36,7 @@ void studentMode(vector<Student> studentList, vector<Subject> subjectList, vecto
 }
 
 
-void tutorMode(vector<Student> studentList, vector<Tutor> tutorList)
+void tutorMode(vector<Student>& studentList,vector<Subject>& subjectList,vector<Tutor>& tutorList,vector<Admin>& adminList, vector<string>& groupList)
 {
 	int accID = utils::acc_log_in(tutorList);
 	Tutor &currentTutor = tutorList[accID];
@@ -75,6 +76,7 @@ void tutorMode(vector<Student> studentList, vector<Tutor> tutorList)
 			keepCycle = false;
 			break;
 		}
+		save(subjectList, studentList, tutorList, groupList, adminList);
 	}
 }
 
@@ -111,14 +113,16 @@ void adminMode(vector<Student>& studentList,vector<Subject>& subjectList,vector<
 		<< endl
 		<< "13. Print admin list" << endl
 		<< "14. Add admin" << endl
-		<< "15. Remove this admin account" << endl;
+		<< "15. Remove this admin account" << endl
+		<< endl
+		<< "16. Save progress" << endl;
 		
 		
 	
 	int select;
 	cin >> select;
 	
-	system("clear");
+	system(CLEARSCR);
 	
 	switch (select)
 	{
@@ -126,7 +130,7 @@ void adminMode(vector<Student>& studentList,vector<Subject>& subjectList,vector<
 			print(studentList);
 			break;
 		case 2:
-			currentAdmin.add(studentList, groupList);
+			currentAdmin.addStudents(studentList, groupList);
 			break;
 		case 3:
 			currentAdmin.removeStudent(studentList);
@@ -138,9 +142,10 @@ void adminMode(vector<Student>& studentList,vector<Subject>& subjectList,vector<
 			print(groupList);
 			break;
 		case 6:
-			currentAdmin.add(groupList);
+			currentAdmin.addGroups(groupList);
 			break;
 		case 7:
+			currentAdmin.removeGroup(groupList, studentList, tutorList);
 			break;
 		case 8:
 			currentAdmin.editGroup(studentList, groupList);
@@ -148,8 +153,30 @@ void adminMode(vector<Student>& studentList,vector<Subject>& subjectList,vector<
 		case 9:
 			print(tutorList);
 			break;
+		case 10:
+			currentAdmin.addTutors(tutorList, subjectList, groupList, studentList); // IMPLEMENT ADD SUBJECT
+			break;
+		case 11:
+			currentAdmin.removeTutor(tutorList);
+			break;
+		case 12:
+			currentAdmin.editTutor(tutorList, subjectList, groupList, studentList); // IMPLEMENT ADD SUBJECT
+			break;
 		case 13:
 			print(adminList);
+			break;
+		case 14: 
+			currentAdmin.addAdmins(adminList);
+			break;
+		case 15:
+			currentAdmin.removeThisAdmin(adminList);
+			keepCycle = false;
+			break;
+		case 16:
+			save(subjectList, studentList, tutorList, groupList, adminList);
+			break;
+		case 17:
+			load(subjectList, studentList, tutorList, groupList, adminList);
 			break;
 		case 20:
 			currentAdmin.debugLoadDefault(subjectList, studentList, tutorList, groupList);

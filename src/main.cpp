@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 
+#include "include/Platform.h"
 #include "include/Student.h"
 #include "include/Users.h"
 #include "include/Subject.h"
@@ -18,21 +19,19 @@ vector<string> groupList;
 
 int main()
 {
-	system("clear");
+	system(CLEARSCR);
 
 	INIT_VECTORS(tutorList, studentList, subjectList, adminList, groupList);
 	
 	Admin defaultAdmin("Default Admin", "admin", "admin");
 	adminList.push_back(defaultAdmin);
 
-	adminList[1].debugLoadDefault(subjectList, studentList, tutorList, groupList);
-
 	cout << "Welcome to GradeBook!" << endl << "=======================" << endl << "Log in as:" << endl << "1. Student" << endl << "2. Tutor" << endl << "3. Admin" << endl << "0. Exit"<< endl << "|";
 
 	int select;
 	cin >> select;
 	
-	system("clear");
+	system(CLEARSCR);
 	
 	switch(select)
 	{
@@ -40,7 +39,7 @@ int main()
 			studentMode(studentList, subjectList, groupList);
 			break;
 		case 2:
-			tutorMode(studentList, tutorList);
+			tutorMode(studentList, subjectList, tutorList, adminList, groupList);
 			break;
 		case 3:
 			adminMode(studentList, subjectList, tutorList, adminList, groupList);

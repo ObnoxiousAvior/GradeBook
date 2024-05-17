@@ -3,15 +3,20 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
+
+#include "Platform.h"
 
 namespace utils
 {
-	template <typename T> inline void queryVar(T& var){
+	template <typename T> 
+	void queryVar(T& var){
 		std::cin >> var;
 		while(getchar()!='\n');
 	}
+
 	
-	void queryMark(int& var, std::string text);
+	void queryInt(int& var);
 	
 	template <typename T>
 	int acc_log_in(T userList)
@@ -22,9 +27,8 @@ namespace utils
 		while(!accFound)
 		{
 			std::cout << "Enter your login: ";
-			
 			std::string log;
-			queryVar(log);
+			std::getline(std::cin,log);
 
 			for(int i = 0; i < userList.size(); ++i)
 			{
@@ -45,7 +49,7 @@ namespace utils
 			std::cout << "Enter your password: ";
 		
 			std::string pass;
-			queryVar(pass);
+			std::getline(std::cin,pass);
 		
 			if(userList[accID].getPassword().compare(pass) == 0) 
 			{
@@ -55,7 +59,7 @@ namespace utils
 			else std::cout << "Wrong password. Try again!" << std::endl;
 	}
 	
-	system("clear");
+	system(CLEARSCR);
 	return accID;
 }
 

@@ -7,8 +7,10 @@
 #include "include/Users.h"
 #include "include/Subject.h"
 #include "include/Modes.h"
+#include "include/interface.h"
 
 using namespace std;
+using namespace interface;
 
 
 vector<Tutor> tutorList;
@@ -26,7 +28,9 @@ int main()
 	Admin defaultAdmin("Default Admin", "admin", "admin");
 	adminList.push_back(defaultAdmin);
 
-	cout << "Welcome to GradeBook!" << endl << "=======================" << endl << "Log in as:" << endl << "1. Student" << endl << "2. Tutor" << endl << "3. Admin" << endl << "0. Exit"<< endl << "|";
+    // Interface initialization
+    greetingToUser();
+    selectionPannel();
 
 	int select;
 	cin >> select;
@@ -45,7 +49,7 @@ int main()
 			adminMode(studentList, subjectList, tutorList, adminList, groupList);
 			break;
 		default:
-			cout << "See you next time!" << endl;
+            exit();
 			break;
 	}
 	return 0;

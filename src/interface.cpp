@@ -14,6 +14,18 @@ void interface::greetingToUser(){
     cout << "+=====================================================+" << endl;
 }
 
+void interface::wrongLogin(){
+    cout << "+-----------------------------------------------------+" << endl;
+    cout << "|        Couldn't find the account. Try again!        |" << endl;
+    cout << "+-----------------------------------------------------+" << endl;
+}
+
+void interface::wrongPassword(){
+    cout << "+-----------------------------------------------------+" << endl;
+    cout << "|              Wrong password. Try again!             |" << endl;
+    cout << "+-----------------------------------------------------+" << endl;
+}
+
 void interface::greetingToTutor(){
     cout << "+-----------------------------------------------------+" << endl
          //<< "Welcome, " << currentTutor.getFullName() << "!" << endl
@@ -67,17 +79,6 @@ void interface::selectionPannel() {
     cout << "| 3. Admin                                            |" << endl;
     cout << "| 0. Exit                                             |" << endl;
     cout << "+-----------------------------------------------------+" << endl;
-    cout << "> ";
-}
-
-void interface::admin_menu() {
-    cout << "+---------------------------------------+" << endl;
-    cout << "| What database would you like to edit? |" << endl;
-    cout << "+---------------------------------------+" << endl;
-    cout << "| 1. Tutors db                        |" << endl;
-    cout << "| 2. Students db                        |" << endl;
-    cout << "| 3. Exit                               |" << endl;
-    cout << "+---------------------------------------+" << endl;
     cout << "> ";
 }
 

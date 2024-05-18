@@ -8,6 +8,7 @@ namespace interface {
     void greetingToTutor();
     void greetingToAdmin();
     void selectionPannel();
-    void admin_menu();
+    void wrongPassword();
+    void wrongLogin();
     void exit();
 }

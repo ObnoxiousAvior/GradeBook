@@ -15,7 +15,7 @@ std::string Subject::getSubName()
 void Subject::printStudents()
 {
 	for(int i = 1; i < vecStudent.size(); ++i) {
-		cout << i << ": " << vecStudent[i].fullName << "Group: "<< vecStudent[i].studentGroup << endl;
+        cout << i << ": " << vecStudent[i].fullName << "| Group: "<< vecStudent[i].studentGroup << endl;
 	}
 	cout << endl;
 }
@@ -23,7 +23,7 @@ void Subject::printStudents()
 
 void Subject::printGroup(string groupName)
 {
-	cout << "Group " << groupName << ":" << endl;
+    cout << "| Group " << groupName << ":" << endl;
 	
 	for(int i = 1; i<vecStudent.size(); i++)
 	{
@@ -33,7 +33,7 @@ void Subject::printGroup(string groupName)
 
 void printGroup(vector<Student> vecStudent, string groupName)
 {
-	cout << "Group " << groupName << ":" << endl;
+    cout << "| Group " << groupName << ":" << endl;
 	
 	for(int i = 1; i<vecStudent.size(); i++)
 	{

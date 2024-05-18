@@ -27,12 +27,12 @@ void studentMode(vector<Student> studentList, vector<Subject> subjectList, vecto
 
 	printGroup(studentList, groupList[groupID]);
 	
-	cout << "Please, enter the number corresponding to your name: ";
+    cout << "| Please, enter the number corresponding to your name: ";
 	
 	int stuID;
 	utils::queryVar(stuID);
 	
-	cout << "The GradeBook of " << studentList[stuID].fullName << endl << "===================" << endl;
+    cout << "The GradeBook of " << studentList[stuID].fullName << endl << "+============================+" << endl;
 	
 	for(int i = 1; i<subjectList.size(); ++i)
 	{
@@ -40,7 +40,7 @@ void studentMode(vector<Student> studentList, vector<Subject> subjectList, vecto
 		subjectList[i].printGrades(stuID, FORMATTED);
 	}
 	
-	cout << "===================" << endl;
+    cout << "+============================+" << endl;
 }
 
 

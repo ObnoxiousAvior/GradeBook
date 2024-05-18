@@ -6,6 +6,7 @@
 #include <algorithm>
 
 #include "Platform.h"
+#include "interface.h"
 
 namespace utils
 {
@@ -22,11 +23,11 @@ namespace utils
 	int acc_log_in(T userList)
 	{
 		bool accFound = false;
-		int accID;
+        int accID;
 
 		while(!accFound)
 		{
-			std::cout << "Enter your login: ";
+            std::cout << "| Enter your login: ";
 			std::string log;
 			std::getline(std::cin,log);
 
@@ -39,14 +40,14 @@ namespace utils
 						break;
 					}
 			}
-			if(!accFound) std::cout << "Couldn't find the account. Try again!" << std::endl;
+            if(!accFound) interface::wrongLogin();
 		}
 		
 		bool passCorrect = false;
 		
 		while(!passCorrect)
 		{
-			std::cout << "Enter your password: ";
+            std::cout << "| Enter your password: ";
 		
 			std::string pass;
 			std::getline(std::cin,pass);
@@ -56,7 +57,7 @@ namespace utils
 				passCorrect = true;
 				break;
 			} 
-			else std::cout << "Wrong password. Try again!" << std::endl;
+            else interface::wrongPassword();
 	}
 	
 	system(CLEARSCR);

@@ -8,8 +8,10 @@ namespace interface {
     void greetingToAdmin();
     void selectionPannelAdmin();
     void removeGroupAdminMode();
+
     void selectGroupToEdit();
     void optionGroupEdit();
+
     void selectTutorToEdit();
     void optionTutorEdit();
 

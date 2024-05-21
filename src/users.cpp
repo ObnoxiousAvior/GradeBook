@@ -409,10 +409,8 @@ void Admin::removeGroup(vector<string>& groupList, vector<Student>& studentList,
 			print(groupList);
 			cout << groupList.size() << ". Add new groups" << endl;
 			
-			cout << "=========================================" << endl;
-			cout << "Student " << studentList[i].fullName << " has no group.\nSelect a new group for them:\n|";
-			cout << "=========================================" << endl;			
-			cout << "Select: ";
+            cout << "+-----------------------------------------------------+" << endl;
+            cout << "| Student " << studentList[i].fullName << " has no group.\n| Select a new group for them:\n> ";
 			
 			int selectGroup;
 			utils::queryVar(selectGroup); 

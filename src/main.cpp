@@ -7,6 +7,7 @@
 #include "include/Users.h"
 #include "include/Subject.h"
 #include "include/Modes.h"
+#include "include/Utils.h"
 
 using namespace std;
 
@@ -31,7 +32,7 @@ int main()
 	cout << "Welcome to GradeBook!" << endl << "=======================" << endl << "Log in as:" << endl << "1. Student" << endl << "2. Tutor" << endl << "3. Admin" << endl << "0. Exit"<< endl << "|";
 
 	int select;
-	cin >> select;
+	utils::queryVar(select);
 	
 	system(CLEARSCR);
 	

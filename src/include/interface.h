@@ -7,6 +7,12 @@ namespace interface {
     //for admin
     void greetingToAdmin();
     void selectionPannelAdmin();
+    void removeGroupAdminMode();
+    void selectGroupToEdit();
+    void optionGroupEdit();
+    void selectTutorToEdit();
+    void optionTutorEdit();
+
 
     //for tutor
     void greetingToTutor();

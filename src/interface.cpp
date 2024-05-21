@@ -52,6 +52,49 @@ void interface::selectionPannelAdmin() {
          << "> ";
 }
 
+void interface::removeGroupAdminMode(){
+    cout << "+-----------------------------------------------------+" << endl
+         << "|               Choose a group to remove              |" << endl
+         << "+-----------------------------------------------------+" << endl
+         << "> ";
+}
+
+void interface::selectGroupToEdit(){
+    cout << "+-----------------------------------------------------+" << endl
+         << "|                Select a group to edit               |" << endl
+         << "+-----------------------------------------------------+" << endl
+         << "> ";
+}
+
+void interface::optionGroupEdit(){
+    cout << "+-----------------------------------------------------+" << endl
+         << "|                       Choose                        |" << endl
+         << "+-----------------------------------------------------+" << endl
+         << "| 1. Edit a name                                      |" << endl
+         << "| 0. Exit                                             |" << endl
+         << "+-----------------------------------------------------+" << endl
+         << "> ";
+}
+
+void interface::selectTutorToEdit(){
+    cout << "+-----------------------------------------------------+" << endl
+         << "|                Select a tutor to edit               | " << endl
+         << "+-----------------------------------------------------+" << endl
+         << "> ";
+}
+
+void interface::optionTutorEdit(){
+    cout << "+-----------------------------------------------------+" << endl
+         << "|                       Choose                        |" << endl
+         << "+-----------------------------------------------------+" << endl
+         << "| 1. Edit a full name                                 |" << endl
+         << "| 2. Change the subject                               |" << endl
+         << "| 3. Change the educated groups                       |" << endl
+         << "| 0. Exit                                             |" << endl
+         << "+-----------------------------------------------------+" << endl
+         << "> ";
+}
+
 //for tutor
 void interface::greetingToTutor(){
     cout << "+-----------------------------------------------------+" << endl

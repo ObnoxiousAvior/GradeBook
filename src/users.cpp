@@ -292,7 +292,7 @@ void Admin::addAdmins(vector<Admin>& adminList)
 
 void print(vector<Student> studentList){
 	system(CLEARSCR);
-    std::cout << "| Here's a full student list: " << std::endl;
+    std::cout << "\n| Here's a full student list: " << std::endl;
 	for(int i = 1; i<studentList.size(); i++) std::cout << i << ". " << studentList[i].fullName << " | Group: " << studentList[i].studentGroup << std::endl; 
 }
 
@@ -303,17 +303,17 @@ void print(vector<string> groupList){
 }
 void print(vector<Tutor> tutorList){
 	system(CLEARSCR);
-    cout << "| Here's a full tutor list: " << endl;
+    cout << "\n| Here's a full tutor list: " << endl;
 	for(int i = 1; i < tutorList.size(); i++) 
 	{
 		cout << i << ". " << tutorList[i].getFullName() << " | Subject: " << tutorList[i].getSub() << endl << "Groups: ";
 		for(int j = 1; j<tutorList[i].getGroupVec().size(); j++) cout << tutorList[i].getGroupVec()[j] << ' ';
-		cout << endl << "____________________" << endl;
+        cout << endl << "_______________________________________________________" << endl;
 	}	
 }
 void print(vector<Admin> adminList){
 	system(CLEARSCR);
-    std::cout << "| Here's a full admin list: " << std::endl;
+    std::cout << "\n| Here's a full admin list: " << std::endl;
 	for(int j = 1; j < adminList.size(); j++) std::cout << j << ". " << adminList[j].getName() << std::endl;
 }
 
@@ -390,8 +390,7 @@ void Admin::editStudent(vector<Student>& studentList, vector<std::string>& group
 void Admin::removeGroup(vector<string>& groupList, vector<Student>& studentList, vector<Tutor>& tutorList)
 {
 	print(groupList);
-	
-	cout << "=========================================" << endl << "Choose a group to remove: ";
+    removeGroupAdminMode();
 	
 	int select;
 	utils::queryVar(select);
@@ -437,13 +436,12 @@ void Admin::removeGroup(vector<string>& groupList, vector<Student>& studentList,
 void Admin::editGroup(vector<Student>& studentList, vector<std::string>& groupList)
 {
 	print(groupList);
-
-	cout << "=========================================" << endl << "Select a group to edit: ";
+    selectGroupToEdit();
 	
 	int selectGroup;
 	utils::queryVar(selectGroup);
 	
-	cout << "=========================================" << endl << "Choose:\n1. Edit a name\n0. Exit\n|";
+    optionGroupEdit();
 	
 	int exit;
 	utils::queryVar(exit);
@@ -451,7 +449,7 @@ void Admin::editGroup(vector<Student>& studentList, vector<std::string>& groupLi
 	if(exit == 0) return;
 	
 	std::string buffer;
-	cout << "The new name for " << groupList[selectGroup] << ": ";
+    cout << "| The new name for " << groupList[selectGroup] << ": ";
 	utils::queryVar(buffer);
 	
 	string prevName = groupList[selectGroup];
@@ -484,13 +482,12 @@ void Admin::removeTutor(vector<Tutor>& tutorList)
 void Admin::editTutor(vector<Tutor>& tutorList, vector<Subject>& subjectList, vector<string>& groupList, vector<Student>& studentList)
 {
 	print(tutorList);
-
-	cout << "=========================================" << endl << "Select a tutor to edit: ";
+    selectTutorToEdit();
 	
 	int select;
 	utils::queryVar(select);
 	
-	cout << "=========================================" << endl << "Choose:\n1. Edit a full name\n2. Change the subject\n3. Change the educated groups\n0. Exit\n|";
+    optionTutorEdit();
 	
 	int exit;
 	utils::queryVar(exit);
@@ -498,7 +495,7 @@ void Admin::editTutor(vector<Tutor>& tutorList, vector<Subject>& subjectList, ve
 	if(exit == 0) return;
 	else if (exit == 1) 
 	{
-		cout << "Type in the tutor's full name:\n|";
+        cout << "| Type in the tutor's full name:\n> ";
 		
 		string name;
 		std::getline(std::cin,name);
@@ -511,7 +508,7 @@ void Admin::editTutor(vector<Tutor>& tutorList, vector<Subject>& subjectList, ve
 		int selectSub;
 		
 		do{
-		cout << "Here's a full subject list:\n";
+        cout << "| Here's a full subject list:\n";
 		for(int j = 1; j<=subjectList.size(); j++)
 		{
 			if (j<subjectList.size()) cout << j << ". " << subjectList[j].getSubName() << endl;
@@ -534,8 +531,8 @@ void Admin::editTutor(vector<Tutor>& tutorList, vector<Subject>& subjectList, ve
 		vector<string> groupVec;
 		print(groupList);
 		
-		cout <<"===================" << endl;
-		cout << "Please, choose the groups your tutor will educate (ex: 1 0 , 2 4 0, 6 2 3 0, etc. 0 to exit): ";
+        longDiveder();
+        cout << "| Please, choose the groups your tutor will educate \n(ex: 1 0 , 2 4 0, 6 2 3 0, etc. 0 to exit): ";
 		
 		int choose = 1;
 

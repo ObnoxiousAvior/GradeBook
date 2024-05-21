@@ -14,8 +14,8 @@ std::string Subject::getSubName()
 
 void Subject::printStudents()
 {
-	for(int i = 1; i < vecStudent.size(); ++i) {
-        cout << i << ": " << vecStudent[i].fullName << "| Group: "<< vecStudent[i].studentGroup << endl;
+    for(unsigned int i = 1; i < vecStudent.size(); ++i) {
+        cout << i << ": " << vecStudent[i].fullName << "\n| Group: "<< vecStudent[i].studentGroup << endl;
 	}
 	cout << endl;
 }
@@ -23,9 +23,9 @@ void Subject::printStudents()
 
 void Subject::printGroup(string groupName)
 {
-    cout << "| Group " << groupName << ":" << endl;
+    cout << "\n| Group " << groupName << ":" << endl;
 	
-	for(int i = 1; i<vecStudent.size(); i++)
+    for(unsigned int i = 1; i<vecStudent.size(); i++)
 	{
 		if (groupName.compare(vecStudent[i].studentGroup) == 0) cout << i << ". " << vecStudent[i].fullName<< endl;
 	} 	
@@ -33,9 +33,9 @@ void Subject::printGroup(string groupName)
 
 void printGroup(vector<Student> vecStudent, string groupName)
 {
-    cout << "| Group " << groupName << ":" << endl;
+    cout << "\n| Group " << groupName << ":" << endl;
 	
-	for(int i = 1; i<vecStudent.size(); i++)
+    for(unsigned int i = 1; i<vecStudent.size(); i++)
 	{
 		if (groupName.compare(vecStudent[i].studentGroup) == 0) cout << i << ". " << vecStudent[i].fullName<< endl;
 	}
@@ -48,13 +48,13 @@ void Subject::printGrades(int studentID, int mode)
 	if(gradeVec[studentID].size()>1)
 	{
 		if(mode == GENERAL_USE) cout << vecStudent[studentID].fullName << ": ";
-		for(int i = 1; i < gradeVec[studentID].size(); ++i) 
+        for(unsigned int i = 1; i < gradeVec[studentID].size(); ++i)
 			cout << gradeVec[studentID][i] << ' ';
 		cout << endl;
 	} 
 	else
 	{
-		cout << "Oops! " << vecStudent[studentID].fullName << " doesn't have any grades at the moment." << endl;
+        cout << "Oops! " << vecStudent[studentID].fullName << " doesn't have any grades at the moment." << endl;
 	}
 }
 
@@ -63,14 +63,14 @@ void Subject::grade(string groupName)
 	system(CLEARSCR);
 	printGroup(groupName);
 
-	cout << "Which student would you like to give a mark to?\n|";
+    cout << "\n| Which student would you like to give a mark to?\n|";
 
 	int select;
 	utils::queryVar(select);
 	
 	system(CLEARSCR);
 	
-	cout << "Type in the mark to give to " << vecStudent[select].fullName << " (An integer from 2 to 5)" << endl << "| ";
+    cout << "\n| Type in the mark to give to " << vecStudent[select].fullName << " (An integer from 2 to 5)" << endl << "> ";
 	
 	int gradeNum;
 	cin >> gradeNum;

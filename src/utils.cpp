@@ -5,6 +5,7 @@
 
 #include "include/Platform.h"
 #include "include/Utils.h"
+#include "include/interface.h"
 
 using namespace std;
 	
@@ -12,8 +13,8 @@ void utils::queryInt(int& var)
 	{
 	while(true)
 	{
-		int tempI;
-		char temp;
+        int tempI{};
+        char temp{};
 		string tempSTR; 
 		
 		bool wrongFlag = false;
@@ -22,15 +23,15 @@ void utils::queryInt(int& var)
 		std::cin >> tempSTR;
 		std::cout << temp << std::endl;
 		
-		for(int i = 0; i<tempSTR.size(); i++)
+        for(unsigned int i = 0; i<tempSTR.size(); i++)
 		{
 			if (!isdigit(tempSTR[i])) wrongFlag = true;
 		}
 		}
 		if (wrongFlag)	
 		{
-			std::cout << "It has to be an INTEGER NUMBER!" << std::endl;
-			std::cout << "=========================================" << std::endl;
+            // wrong flag image
+            interface::wrongFlag();
 			tempSTR.clear();
 			continue;
 		}

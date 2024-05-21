@@ -8,8 +8,10 @@
 #include "include/Users.h"
 #include "include/Subject.h"
 #include "include/Utils.h"
+#include "include/interface.h"
 
 using namespace std;
+using namespace interface;
 // GENERAL USER FUNCTIONS
 
 // TUTOR FUNCTIONS
@@ -17,10 +19,7 @@ using namespace std;
 void Tutor::printStudentGrades(vector<Student> studentList)
 {
 	print(studentGroups);
-	
-	cout << "===================" << endl;
-	
-	cout << "Please, choose the group:\n|";
+    chooseGroupTutorMode();
 
 	int groupID;
 	utils::queryVar(groupID);
@@ -29,38 +28,35 @@ void Tutor::printStudentGrades(vector<Student> studentList)
 
 	printGroup(studentList, studentGroups[groupID]);
 
-	cout << "Please, select the student:\n|";
+    cout << "\n| Please, select the student:\n> ";
 
 	int stuID;
 	utils::queryVar(stuID);
 	
 	system(CLEARSCR); 
 	
-	cout << "The GradeBook of " << studentList[stuID].fullName 
-		<< endl << "===================" << endl;
+    cout << "+-----------------------------------------------------+" << endl
+         << "| The GradeBook page of " << studentList[stuID].fullName << endl
+         << "+-----------------------------------------------------+" << endl;
 
 	cout << "| " << subject.getSubName() << " |: ";
 	subject.printGrades(stuID, FORMATTED);
-	cout << "===================" << endl;
+    cout << "+-----------------------------------------------------+" << endl;
 }
 
 void Tutor::printGroupGrades(vector<Student> studentList)
 {
 	print(studentGroups);
-	
-	cout << "===================" << endl;
-
-	cout << "Please, choose the group:\n|";
+    chooseGroupTutorMode();
 
 	int groupID;
 	utils::queryVar(groupID);
 
 	system(CLEARSCR);
 
-	cout << "The GradeBook of " << studentGroups[groupID] 
-		<< endl << "===================" << endl;
-
-
+    cout << "+-----------------------------------------------------+" << endl
+         << "| The GradeBook page of " <<  studentGroups[groupID] << endl
+         << "+-----------------------------------------------------+" << endl;
 
 	for (int i = 1; i < studentList.size(); i++) 
 	{	 
@@ -70,15 +66,13 @@ void Tutor::printGroupGrades(vector<Student> studentList)
 			subject.printGrades(i, FORMATTED);
 		}
 	}
-	cout <<"===================" << endl;
+    cout << "+-----------------------------------------------------+" << endl;
 }
 
 void Tutor::gradeStudent()
 {
-	print(studentGroups);
-
-	cout <<"===================" << endl;
-	cout << "Please, choose the group: ";
+    print(studentGroups);
+    chooseGroupTutorMode();
 
 	int groupID;
 	utils::queryVar(groupID);
@@ -92,7 +86,7 @@ void Tutor::gradeStudent()
 
 void Admin::addSubject(vector<Subject>& subjectList, vector<Student>& studentList)
 {
-	cout << "Type in the subject name:\n|";
+    cout << "| Type in the subject name:\n> ";
 	
 	string name;
 	std::getline(std::cin, name);
@@ -103,18 +97,18 @@ void Admin::addSubject(vector<Subject>& subjectList, vector<Student>& studentLis
 
 void Admin::addStudents(vector<Student>& studentList, vector<string>& groupList)
 {
-	cout <<  "How many students would you like to add?\n|";
+    cout <<  "| How many students would you like to add?\n> ";
 	
 	int n;
 	utils::queryVar(n);
 	
 	if (n<=0) return;
 	
-	cout << "=========================================" << endl;
+    cout << "+-----------------------------------------------------+" << endl;
 	
 	for(int i = 1; i <= n; i++)
 	{
-		cout << "Student " << i << ":" << endl << "Type in the student's full name: ";
+        cout << "| Student " << i << ":" << endl << "| Type in the student's full name: ";
 		
 		string stuName;
 		std::getline(std::cin, stuName);
@@ -122,7 +116,7 @@ void Admin::addStudents(vector<Student>& studentList, vector<string>& groupList)
 		
 		if (groupList.size() == 0) 
 		{
-			cout << "Looks like the database doesn't have any groups yet!\nWould you like to add new groups?\n1. Yes\n2. No\n|";
+            creatingDB();
 		
 			int select;
 			utils::queryVar(select);
@@ -131,14 +125,13 @@ void Admin::addStudents(vector<Student>& studentList, vector<string>& groupList)
 			else addGroups(groupList);
 		}
 		
-		cout << "=========================================" << endl;
+        cout << "+-----------------------------------------------------+" << endl;
 		
 		do	{
 		print(groupList);
 		
 		cout << endl;
-		
-		cout << "Select: ";
+        cout << "| Select: ";
 		
 		int selectGroup;
 		utils::queryVar(selectGroup); 
@@ -157,20 +150,20 @@ void Admin::addStudents(vector<Student>& studentList, vector<string>& groupList)
 	}
 	
 	system(CLEARSCR);
-	cout << "Successfully added " << n << " student(s)" << endl;
+    cout << "S| uccessfully added " << n << " student(s)" << endl;
 }
 
 // ADD GROUPS
 void Admin::addGroups(vector<string>& groupList)
 {
-	cout << "How many groups would you like to add?\n|";
+    cout << "| How many groups would you like to add?\n> ";
 	
 	int n;
 	utils::queryVar(n);
 	
 	for(int i = 1; i <= n; i++)
 	{
-		cout << "Group " << i << ":" << endl << "Type in a name for a group: ";
+        cout << "| Group " << i << ":" << endl << "| Type in a name for a group: ";
 
 		std::string groupName;
 		std::getline(std::cin, groupName);
@@ -185,8 +178,7 @@ void Admin::addGroups(vector<string>& groupList)
 void Admin::addTutors(vector<Tutor>& tutorList, vector<Subject>& subjectList, vector<string>& groupList, vector<Student>& studentList)
 {
 	print(tutorList);
-	cout << "=========================================" << endl;
-	cout << "How many tutors would you like to add?\n|";
+    cout << "\n| How many tutors would you like to add?\n> ";
 	
 	int n;
 	utils::queryVar(n);
@@ -194,7 +186,7 @@ void Admin::addTutors(vector<Tutor>& tutorList, vector<Subject>& subjectList, ve
 	for(int i = 1; i <= n; i++)
 	{
 		system(CLEARSCR);
-		cout << "Tutor " << i << ":" << endl << "Type in the tutor's first name: ";
+        cout << "| Tutor " << i << ":" << endl << "| Type in the tutor's first name: ";
 		
 		string tutorName;
 		std::getline(std::cin, tutorName);
@@ -202,7 +194,7 @@ void Admin::addTutors(vector<Tutor>& tutorList, vector<Subject>& subjectList, ve
 		int selectSub;
 		
 		do{
-		cout << "Here's a full subject list:\n";
+        cout << "| Here's a full subject list:\n";
 		for(int j = 1; j<=subjectList.size(); j++)
 		{
 			if (j<subjectList.size()) cout << j << ". " << subjectList[j].getSubName() << endl;
@@ -226,8 +218,9 @@ void Admin::addTutors(vector<Tutor>& tutorList, vector<Subject>& subjectList, ve
 		
 		print(groupList);
 		
-		cout <<"===================" << endl;
-		cout << "Please, choose the groups your tutor will educate (ex: 1 0 , 2 4 0, 6 2 3 0, etc. 0 to exit): ";
+        cout << "+--------------------------------------------------------------------------------------------+" << endl;
+        cout << "Please, choose the groups your tutor will educate (ex: 1 0 , 2 4 0, 6 2 3 0, etc. 0 to exit):";
+        cout << "> ";
 
 		while(choose)
 		{
@@ -242,13 +235,13 @@ void Admin::addTutors(vector<Tutor>& tutorList, vector<Subject>& subjectList, ve
 			groupVec.push_back(groupList[groupIDvec[j]]);
 		}
 		
-		cout << "Please, enter a login:\n|"; 
+        cout << "| Please, enter a login:\n|";
 		
 		while(getchar()!='\n');
 		string log;
 		std::getline(std::cin, log);
 		
-		cout << "Please, enter a password:\n|"; 
+        cout << "| Please, enter a password:\n|";
 		string pass;
 		std::getline(std::cin, pass);
 		
@@ -263,8 +256,8 @@ void Admin::addTutors(vector<Tutor>& tutorList, vector<Subject>& subjectList, ve
 void Admin::addAdmins(vector<Admin>& adminList)
 {
 	print(adminList);
-	cout << "=========================================" << endl;
-	cout << "How many administrators would you like to add?\n|";
+    cout << "+-----------------------------------------------------+" << endl;
+    cout << "| How many administrators would you like to add?\n> ";
 	
 	int n;
 	utils::queryVar(n);
@@ -272,19 +265,19 @@ void Admin::addAdmins(vector<Admin>& adminList)
 	for(int i = 1; i <= n; i++)
 	{
 		system(CLEARSCR);
-		cout << "Tutor " << i << ":" << endl << "Type in a name of an admin:\n|";
+        cout << "| Tutor " << i << ":" << endl << "| Type in a name of an admin:\n|";
 
 		std::string adminName;
 		std::getline(std::cin, adminName);
 		
 		system(CLEARSCR);
 
-		cout << "Please, enter a login:\n|"; 
+        cout << "| Please, enter a login:\n|";
 
 		string log;
 		std::getline(std::cin, log);
 		
-		cout << "Please, enter a password:\n|"; 
+        cout << "| Please, enter a password:\n|";
 		
 		string pass;
 		std::getline(std::cin, pass);
@@ -299,18 +292,18 @@ void Admin::addAdmins(vector<Admin>& adminList)
 
 void print(vector<Student> studentList){
 	system(CLEARSCR);
-	std::cout << "Here's a full student list: " << std::endl;
+    std::cout << "| Here's a full student list: " << std::endl;
 	for(int i = 1; i<studentList.size(); i++) std::cout << i << ". " << studentList[i].fullName << " | Group: " << studentList[i].studentGroup << std::endl; 
 }
 
 void print(vector<string> groupList){
 	system(CLEARSCR);
-	cout << "Here's a full group list: " << endl;
+    cout << "| Here's a full group list: " << endl;
 	for(int i = 1; i < groupList.size(); i++) std::cout << i << ". " << groupList[i] << std::endl;	
 }
 void print(vector<Tutor> tutorList){
 	system(CLEARSCR);
-	cout << "Here's a full tutor list: " << endl;
+    cout << "| Here's a full tutor list: " << endl;
 	for(int i = 1; i < tutorList.size(); i++) 
 	{
 		cout << i << ". " << tutorList[i].getFullName() << " | Subject: " << tutorList[i].getSub() << endl << "Groups: ";
@@ -320,7 +313,7 @@ void print(vector<Tutor> tutorList){
 }
 void print(vector<Admin> adminList){
 	system(CLEARSCR);
-	std::cout << "Here's a full admin list: " << std::endl;
+    std::cout << "| Here's a full admin list: " << std::endl;
 	for(int j = 1; j < adminList.size(); j++) std::cout << j << ". " << adminList[j].getName() << std::endl;
 }
 
@@ -329,7 +322,9 @@ void Admin::removeStudent(vector<Student>& studentList)
 {
 	print(studentList);
 	
-	cout << "=========================================" << endl << "Choose a student to remove: ";
+    cout << "+-----------------------------------------------------+" << endl
+         << "| Choose a student to remove" << endl
+         << "> ";
 	
 	int select;
 	utils::queryVar(select);
@@ -337,14 +332,16 @@ void Admin::removeStudent(vector<Student>& studentList)
 	studentList.erase(studentList.begin()+select);
 	
 	system(CLEARSCR);
-	cout << "Successfully removed"<< endl;
+    removing();
 }
 
 void Admin::editStudent(vector<Student>& studentList, vector<std::string>& groupList)
 {
 	print(studentList);
 		
-	cout << "Choose a student to edit: ";
+    cout << "+-----------------------------------------------------+" << endl
+         << "| Choose a student to edit" << endl
+         << "> ";
 	
 	int select;
 	utils::queryVar(select); 
@@ -357,7 +354,7 @@ void Admin::editStudent(vector<Student>& studentList, vector<std::string>& group
 	if(name_or_group == 0) return;
 	else if (name_or_group == 1) 
 	{
-		cout << "Type in the student's full name:\n|";
+        cout << "| Type in the student's full name:\n> ";
 		
 		string name;
 		utils::queryVar(name);
@@ -370,7 +367,7 @@ void Admin::editStudent(vector<Student>& studentList, vector<std::string>& group
 		print(groupList);
 		cout << groupList.size() << ". Add new groups" << endl;
 		
-		cout << "Select: ";
+        cout << "| Select: ";
 		
 		int selectGroup;
 		utils::queryVar(selectGroup); 
@@ -471,8 +468,7 @@ void Admin::editGroup(vector<Student>& studentList, vector<std::string>& groupLi
 void Admin::removeTutor(vector<Tutor>& tutorList)
 {
 	print(tutorList);
-	
-	cout << "=========================================" << endl << "Choose a tutor to remove: ";
+    selectionRemove();
 	
 	int select;
 	utils::queryVar(select);
@@ -481,8 +477,8 @@ void Admin::removeTutor(vector<Tutor>& tutorList)
 	
 	tutorList.pop_back();
 	
-	system(CLEARSCR);
-	cout << "Successfully removed"<< endl;
+    system(CLEARSCR);
+    removing();
 }
 
 void Admin::editTutor(vector<Tutor>& tutorList, vector<Subject>& subjectList, vector<string>& groupList, vector<Student>& studentList)
@@ -562,7 +558,7 @@ void Admin::editTutor(vector<Tutor>& tutorList, vector<Subject>& subjectList, ve
 
 void Admin::removeThisAdmin(vector<Admin>& adminList)
 {
-	cout << "Are you sure you want to delete this account?\n1.Yes\n2.No\n|";
+    selectionRemove();
 		
 	int select;
 	utils::queryVar(select);
@@ -572,7 +568,7 @@ void Admin::removeThisAdmin(vector<Admin>& adminList)
 	adminList.erase(adminList.begin()+select);
 	
 	system(CLEARSCR);
-	cout << "Successfully removed"<< endl;
+    removing();
 }
 
 void save(vector<Subject>& subjectList, vector<Student>& studentList, vector<Tutor>& tutorList, vector<string>& groupList, vector<Admin>& adminList)
@@ -599,28 +595,28 @@ void save(vector<Subject>& subjectList, vector<Student>& studentList, vector<Tut
 	
 	saveFile << studentList.size() << endl;
 	
-	for(int i = 1; i<studentList.size(); i++) saveFile << studentList[i].fullName << endl << studentList[i].studentGroup << endl;
+    for(int i = 1; i<studentList.size(); i++) saveFile << studentList[i].fullName << endl << studentList[i].studentGroup << endl;
 	
 	saveFile << tutorList.size() << endl;
 	
-	for(int i = 1; i<tutorList.size(); i++) 
+    for(int i = 1; i<tutorList.size(); i++)
 	{
 		saveFile << tutorList[i].getFullName() << ' ' << tutorList[i].getSub() << endl;
 		
 		saveFile << tutorList[i].getGroupVec().size() << endl;
 		
-		for(int j = 1; j < tutorList[i].getGroupVec().size(); j++) saveFile << tutorList[i].getGroupVec()[j] << ' ';
+        for(int j = 1; j < tutorList[i].getGroupVec().size(); j++) saveFile << tutorList[i].getGroupVec()[j] << ' ';
 		saveFile << endl << tutorList[i].getLogin() << endl << tutorList[i].getPassword() << endl;
 	}
 	
 	saveFile << adminList.size() << endl;
 	
-	for(int i = 1; i<adminList.size(); i++)
+    for(int i = 1; i<adminList.size(); i++)
 	{
 		saveFile << adminList[i].getName() << endl << adminList[i].getLogin() << endl << adminList[i].getPassword() << endl;
 	}
 	
-	for(int i = 1; i<groupList.size(); i++)
+    for(int i = 1; i<groupList.size(); i++)
 	{
 		saveFile << groupList[i] << endl;
 	}
@@ -669,7 +665,7 @@ void load(vector<Subject>& subjectList, vector<Student>& studentList, vector<Tut
 			
 			vector<int> vecc;
 			
-			for(int k = 0; k<line.size(); k++)
+            for(int k = 0; k<line.size(); k++)
 			{
 				if (isdigit(line[k]))
 				{
@@ -705,7 +701,7 @@ void load(vector<Subject>& subjectList, vector<Student>& studentList, vector<Tut
 		
 		int subID;
 		
-		for(int j = 1; j<subjectList.size(); j++)
+        for(int j = 1; j<subjectList.size(); j++)
 		{
 			if(sName.compare(subjectList[j].getSubName())==0)
 			{
@@ -716,7 +712,7 @@ void load(vector<Subject>& subjectList, vector<Student>& studentList, vector<Tut
 		
 		vector<string> groupV;
 		
-		int h;
+        int h{};
 		
 		for(int j = 0; j<2-1; j++)
 		{

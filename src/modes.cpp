@@ -10,37 +10,35 @@ using namespace interface;
 
 void studentMode(vector<Student> studentList, vector<Subject> subjectList, vector<string> groupList)
 {
-    cout << "+-----------------------------------------------------+" << endl;
-    cout << "|    You're now using the GradeBook as a student!     |" << endl;
-    cout << "+-----------------------------------------------------+" << endl;
-    cout << "| Groups:                                             |" << endl;
-	
+    // interface for student
+    greetingToStudent();
 	print(groupList);
 	
-    cout << "+-----------------------------------------------------+" << endl;
-    cout << "|    Please, select the group you're studying in:     |" << endl;;
-    cout << "+-----------------------------------------------------+" << endl;
-    cout << "> ";
+    // option pannel for student
+    selectionPannelStudent();
 	
 	int groupID;
 	utils::queryVar(groupID);
 
 	printGroup(studentList, groupList[groupID]);
 	
-    cout << "| Please, enter the number corresponding to your name: ";
+    cout << "\n| Please, enter the number corresponding to your name: ";
 	
 	int stuID;
 	utils::queryVar(stuID);
 	
-    cout << "The GradeBook of " << studentList[stuID].fullName << endl << "+============================+" << endl;
+    cout << "\n| The GradeBook profile of " << studentList[stuID].fullName << endl;
+    // interface element
+    longDiveder();
 	
-	for(int i = 1; i<subjectList.size(); ++i)
+    for(unsigned int i = 1; i<subjectList.size(); ++i)
 	{
 		cout << "| " << subjectList[i].getSubName() << " | ";
 		subjectList[i].printGrades(stuID, FORMATTED);
 	}
 	
-    cout << "+============================+" << endl;
+    // interface element
+    longDiveder();
 }
 
 
@@ -161,6 +159,6 @@ void adminMode(vector<Student>& studentList,vector<Subject>& subjectList,vector<
 			keepCycle = false;
 			break;
 		}
-		for(int i = 1; i < subjectList.size(); i++) subjectList[i].updateGradeVec();
+        for(unsigned int i = 1; i < subjectList.size(); i++) subjectList[i].updateGradeVec();
 	}
 }

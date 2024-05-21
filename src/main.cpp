@@ -28,9 +28,12 @@ int main()
 	Admin defaultAdmin("Default Admin", "admin", "admin");
 	adminList.push_back(defaultAdmin);
 
+    // new admin
+    adminList[0].debugLoadDefault(subjectList, studentList, tutorList, groupList);
+
     // Interface initialization
     greetingToUser();
-    selectionPannel();
+    selectionPannelAdmin();
 
 	int select;
 	cin >> select;

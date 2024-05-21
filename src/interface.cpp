@@ -8,38 +8,7 @@ using namespace std;
 
 // interface functions
 
-void interface::greetingToUser(){
-    cout << "+=====================================================+" << endl;
-    cout << "|                Welcome to GradeBook!                |" << endl;
-    cout << "+=====================================================+" << endl;
-}
-
-void interface::wrongLogin(){
-    cout << "+-----------------------------------------------------+" << endl;
-    cout << "|        Couldn't find the account. Try again!        |" << endl;
-    cout << "+-----------------------------------------------------+" << endl;
-}
-
-void interface::wrongPassword(){
-    cout << "+-----------------------------------------------------+" << endl;
-    cout << "|              Wrong password. Try again!             |" << endl;
-    cout << "+-----------------------------------------------------+" << endl;
-}
-
-void interface::greetingToTutor(){
-    cout << "+-----------------------------------------------------+" << endl
-         //<< "Welcome, " << currentTutor.getFullName() << "!" << endl
-         << "|          Welcome, you've logged in as Tutor!        |" << endl
-         << "+-----------------------------------------------------+" << endl
-         << "|             What would you like to do?              |" << endl
-         << "+-----------------------------------------------------+" << endl
-         << "| 1. Print student's grades on your subject           |" << endl
-         << "| 2. Print group's grades on your subject             |" << endl
-         << "| 3. Grade a student                                  |" << endl
-         << "+-----------------------------------------------------+" << endl
-         << "> ";
-}
-
+//for admin
 void interface::greetingToAdmin(){
     cout << "+-----------------------------------------------------+" << endl
          //<< "|      Welcome, " << currentAdmin.getName() << "!     |" << endl
@@ -66,25 +35,118 @@ void interface::greetingToAdmin(){
          << "| 15. Remove this admin account                       |" << endl
          << "+-----------------------------------------------------+" << endl
          << "| 16. Save progress                                   |" << endl
+         << "| 17. Load from file                                  |" << endl
          << "+-----------------------------------------------------+" << endl
          << "> ";
 }
 
-void interface::selectionPannel() {
-    cout << "+-----------------------------------------------------+" << endl;
-    cout << "|                     Log in as?                      |" << endl;
-    cout << "+-----------------------------------------------------+" << endl;
-    cout << "| 1. Student                                          |" << endl;
-    cout << "| 2. Tutor                                            |" << endl;
-    cout << "| 3. Admin                                            |" << endl;
-    cout << "| 0. Exit                                             |" << endl;
-    cout << "+-----------------------------------------------------+" << endl;
-    cout << "> ";
+void interface::selectionPannelAdmin() {
+    cout << "+-----------------------------------------------------+" << endl
+         << "|          How would you like to log in as?           |" << endl
+         << "+-----------------------------------------------------+" << endl
+         << "| 1. Student                                          |" << endl
+         << "| 2. Tutor                                            |" << endl
+         << "| 3. Admin                                            |" << endl
+         << "| 0. Exit                                             |" << endl
+         << "+-----------------------------------------------------+" << endl
+         << "> ";
+}
+
+//for tutor
+void interface::greetingToTutor(){
+    cout << "+-----------------------------------------------------+" << endl
+         //<< "Welcome, " << currentTutor.getFullName() << "!" << endl
+         << "|          Welcome, you've logged in as Tutor!        |" << endl
+         << "+-----------------------------------------------------+" << endl
+         << "| 1. Print student's grades on your subject           |" << endl
+         << "| 2. Print group's grades on your subject             |" << endl
+         << "| 3. Grade a student                                  |" << endl
+         << "+-----------------------------------------------------+" << endl
+         << "> ";
+}
+
+void interface::chooseGroupTutorMode(){
+    cout << "+-----------------------------------------------------+" << endl
+         << "|               Please, choose the group              |" << endl
+         << "+-----------------------------------------------------+" << endl
+         << "> ";
+}
+
+//for student
+void interface::greetingToStudent(){
+    cout << "+-----------------------------------------------------+" << endl
+         << "|    You're now using the GradeBook as a student!     |" << endl
+         << "+-----------------------------------------------------+" << endl
+         << "| Groups:" << endl;
+}
+
+void interface::selectionPannelStudent(){
+    cout << "+-----------------------------------------------------+" << endl
+         << "|    Please, select the group you're studying in:     |" << endl
+         << "+-----------------------------------------------------+" << endl
+         << "> ";
+}
+
+//programm
+void interface::removing(){
+    cout << "+-----------------------------------------------------+" << endl
+         << "|                 Successfully removed                |"<< endl
+         << "+-----------------------------------------------------+" << endl;
+}
+
+void interface::selectionRemove(){
+    cout << "+-----------------------------------------------------+" << endl
+         << "|    Are you sure you want to delete this account?    |" << endl
+         << "+-----------------------------------------------------+" << endl
+         << "| 1. Yes                                              |" << endl
+         << "| 2. No                                               |" << endl
+         << "+-----------------------------------------------------+" << endl
+         << "> ";
+}
+
+void interface::greetingToUser(){
+    cout << "+=====================================================+" << endl
+         << "|                Welcome to GradeBook!                |" << endl
+         << "+=====================================================+" << endl;
+}
+
+void interface::wrongLogin(){
+    cout << "+-----------------------------------------------------+" << endl
+         << "|        Couldn't find the account. Try again!        |" << endl
+         << "+-----------------------------------------------------+" << endl;
+}
+
+void interface::wrongPassword(){
+    cout << "+-----------------------------------------------------+" << endl
+         << "|              Wrong password. Try again!             |" << endl
+         << "+-----------------------------------------------------+" << endl;
+}
+
+void interface::longDiveder(){
+    cout << "+----------------------------------------------------------------------------+" << endl;
+}
+
+void interface::wrongFlag(){
+    std::cout << "+=====================================================+" << std::endl
+              << "|           It has to be an INTEGER NUMBER!           |" << std::endl
+              << "+=====================================================+" << std::endl;
+}
+
+void interface::creatingDB(){
+
+    cout << "\nLooks like the database doesn't have any groups yet!\n" << endl
+         << "+-----------------------------------------------------+" << endl
+         << "|          Would you like to add new groups?          |" << endl
+         << "+-----------------------------------------------------+" << endl
+         << "| 1. Yes                                              |"
+         << "| 2. No                                               |"
+         << "+-----------------------------------------------------+" << endl
+         << "> ";
 }
 
 void interface::exit() {
-    cout << "+=====================================================+" << endl;
-    cout << "|                   See you next time                 |" << endl;
-    cout << "+=====================================================+" << endl;
+    cout << "+=====================================================+" << endl
+         << "|                   See you next time                 |" << endl
+         << "+=====================================================+" << endl;
 }
 

@@ -9,7 +9,7 @@ using namespace std;
 // interface functions
 
 //for admin
-void interface::greetingToAdmin(){
+void interface::greetingToAdmin(){ //Вывод интерфейса для администратора
     cout << "+-----------------------------------------------------+" << endl
          //<< "|      Welcome, " << currentAdmin.getName() << "!     |" << endl
          << "|         Welcome, you've logged in as Admin!         |" << endl
@@ -40,7 +40,7 @@ void interface::greetingToAdmin(){
          << "> ";
 }
 
-void interface::selectionPannelAdmin() {
+void interface::selectionPannelAdmin() { //Вывод интерфейса для выбора мода
     cout << "+-----------------------------------------------------+" << endl
          << "|          How would you like to log in as?           |" << endl
          << "+-----------------------------------------------------+" << endl
@@ -52,21 +52,21 @@ void interface::selectionPannelAdmin() {
          << "> ";
 }
 
-void interface::removeGroupAdminMode(){
+void interface::removeGroupAdminMode(){ //Вывод интерфейса для удаления группы
     cout << "+-----------------------------------------------------+" << endl
          << "|               Choose a group to remove              |" << endl
          << "+-----------------------------------------------------+" << endl
          << "> ";
 }
 
-void interface::selectGroupToEdit(){
+void interface::selectGroupToEdit(){ //Вывод интерфейса для изменения группы
     cout << "+-----------------------------------------------------+" << endl
          << "|                Select a group to edit               |" << endl
          << "+-----------------------------------------------------+" << endl
          << "> ";
 }
 
-void interface::optionGroupEdit(){
+void interface::optionGroupEdit(){ //Вывод интерфейса для изменения группы
     cout << "+-----------------------------------------------------+" << endl
          << "|                       Choose                        |" << endl
          << "+-----------------------------------------------------+" << endl
@@ -76,14 +76,14 @@ void interface::optionGroupEdit(){
          << "> ";
 }
 
-void interface::selectTutorToEdit(){
+void interface::selectTutorToEdit(){ //Вывод интерфейса для изменения преподователя
     cout << "+-----------------------------------------------------+" << endl
          << "|                Select a tutor to edit               | " << endl
          << "+-----------------------------------------------------+" << endl
          << "> ";
 }
 
-void interface::optionTutorEdit(){
+void interface::optionTutorEdit(){//Вывод интерфейса для изменения преподователя
     cout << "+-----------------------------------------------------+" << endl
          << "|                       Choose                        |" << endl
          << "+-----------------------------------------------------+" << endl
@@ -96,7 +96,7 @@ void interface::optionTutorEdit(){
 }
 
 //for tutor
-void interface::greetingToTutor(){
+void interface::greetingToTutor(){//Вывод интерфейса для преподователя
     cout << "+-----------------------------------------------------+" << endl
          //<< "Welcome, " << currentTutor.getFullName() << "!" << endl
          << "|          Welcome, you've logged in as Tutor!        |" << endl
@@ -108,7 +108,7 @@ void interface::greetingToTutor(){
          << "> ";
 }
 
-void interface::chooseGroupTutorMode(){
+void interface::chooseGroupTutorMode(){//Вывод интерфейса для выбора группы(функция для преподователя)
     cout << "+-----------------------------------------------------+" << endl
          << "|               Please, choose the group              |" << endl
          << "+-----------------------------------------------------+" << endl
@@ -116,14 +116,14 @@ void interface::chooseGroupTutorMode(){
 }
 
 //for student
-void interface::greetingToStudent(){
+void interface::greetingToStudent(){//Вывод интерфейса для студента
     cout << "+-----------------------------------------------------+" << endl
          << "|    You're now using the GradeBook as a student!     |" << endl
          << "+-----------------------------------------------------+" << endl
          << "| Groups:" << endl;
 }
 
-void interface::selectionPannelStudent(){
+void interface::selectionPannelStudent(){//Вывод интерфейса для выбора группы(функция для студента)
     cout << "+-----------------------------------------------------+" << endl
          << "|    Please, select the group you're studying in:     |" << endl
          << "+-----------------------------------------------------+" << endl
@@ -131,13 +131,13 @@ void interface::selectionPannelStudent(){
 }
 
 //programm
-void interface::removing(){
+void interface::removing(){ //Вывод результата удаления
     cout << "+-----------------------------------------------------+" << endl
          << "|                 Successfully removed                |"<< endl
          << "+-----------------------------------------------------+" << endl;
 }
 
-void interface::selectionRemove(){
+void interface::selectionRemove(){ //Вывод выбора удаления
     cout << "+-----------------------------------------------------+" << endl
          << "|    Are you sure you want to delete this account?    |" << endl
          << "+-----------------------------------------------------+" << endl
@@ -147,35 +147,35 @@ void interface::selectionRemove(){
          << "> ";
 }
 
-void interface::greetingToUser(){
+void interface::greetingToUser(){ //Начальная фраза для пользователя
     cout << "+=====================================================+" << endl
          << "|                Welcome to GradeBook!                |" << endl
          << "+=====================================================+" << endl;
 }
 
-void interface::wrongLogin(){
+void interface::wrongLogin(){ //Вывод ошибки логина
     cout << "+-----------------------------------------------------+" << endl
          << "|        Couldn't find the account. Try again!        |" << endl
          << "+-----------------------------------------------------+" << endl;
 }
 
-void interface::wrongPassword(){
+void interface::wrongPassword(){ //Вывод ошибки пароля
     cout << "+-----------------------------------------------------+" << endl
          << "|              Wrong password. Try again!             |" << endl
          << "+-----------------------------------------------------+" << endl;
 }
 
-void interface::longDiveder(){
+void interface::longDiveder(){  //Вывод крутой палки
     cout << "+----------------------------------------------------------------------------+" << endl;
 }
 
-void interface::wrongFlag(){
+void interface::wrongFlag(){ //Вывод ошибки ввода
     std::cout << "+=====================================================+" << std::endl
               << "|           It has to be an INTEGER NUMBER!           |" << std::endl
               << "+=====================================================+" << std::endl;
 }
 
-void interface::creatingDB(){
+void interface::creatingDB(){ //Вывод создания новой группы
 
     cout << "\nLooks like the database doesn't have any groups yet!\n" << endl
          << "+-----------------------------------------------------+" << endl
@@ -187,7 +187,7 @@ void interface::creatingDB(){
          << "> ";
 }
 
-void interface::exit() {
+void interface::exit() { //Вывод зфразы завершения программы
     cout << "+=====================================================+" << endl
          << "|                   See you next time                 |" << endl
          << "+=====================================================+" << endl;

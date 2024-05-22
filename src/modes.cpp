@@ -8,7 +8,7 @@
 using namespace std;
 using namespace interface;
 
-void studentMode(vector<Student> studentList, vector<Subject> subjectList, vector<string> groupList)
+void studentMode(vector<Student> studentList, vector<Subject> subjectList, vector<string> groupList) //Открывает функции студента
 {
     // interface for student
     greetingToStudent();
@@ -42,7 +42,7 @@ void studentMode(vector<Student> studentList, vector<Subject> subjectList, vecto
 }
 
 
-void tutorMode(vector<Student>& studentList,vector<Subject>& subjectList,vector<Tutor>& tutorList,vector<Admin>& adminList, vector<string>& groupList)
+void tutorMode(vector<Student>& studentList,vector<Subject>& subjectList,vector<Tutor>& tutorList,vector<Admin>& adminList, vector<string>& groupList) //Открывает функции преподователя
 {
 	int accID = utils::acc_log_in(tutorList);
 	Tutor &currentTutor = tutorList[accID];
@@ -79,7 +79,7 @@ void tutorMode(vector<Student>& studentList,vector<Subject>& subjectList,vector<
 	}
 }
 
-void adminMode(vector<Student>& studentList,vector<Subject>& subjectList,vector<Tutor>& tutorList,vector<Admin>& adminList, vector<string>& groupList)
+void adminMode(vector<Student>& studentList,vector<Subject>& subjectList,vector<Tutor>& tutorList,vector<Admin>& adminList, vector<string>& groupList) //Открывает функции администратора
 {
 	int accID = utils::acc_log_in(adminList);
 	Admin &currentAdmin = adminList[accID];

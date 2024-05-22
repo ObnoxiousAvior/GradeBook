@@ -12,7 +12,7 @@ std::string Subject::getSubName()
 	return subName;
 }
 
-void Subject::printStudents()
+void Subject::printStudents() //Выводит список студентов
 {
     for(unsigned int i = 1; i < vecStudent.size(); ++i) {
         cout << i << ": " << vecStudent[i].fullName << "\n| Group: "<< vecStudent[i].studentGroup << endl;
@@ -21,7 +21,7 @@ void Subject::printStudents()
 }
 
 
-void Subject::printGroup(string groupName)
+void Subject::printGroup(string groupName) //Выводит список групп
 {
     cout << "\n| Group " << groupName << ":" << endl;
 	
@@ -31,7 +31,7 @@ void Subject::printGroup(string groupName)
 	} 	
 }
 
-void printGroup(vector<Student> vecStudent, string groupName)
+void printGroup(vector<Student> vecStudent, string groupName) //Выводит список студетов определённой группы
 {
     cout << "\n| Group " << groupName << ":" << endl;
 	
@@ -41,7 +41,7 @@ void printGroup(vector<Student> vecStudent, string groupName)
 	}
 }
 
-void Subject::printGrades(int studentID, int mode)
+void Subject::printGrades(int studentID, int mode) //Выводит оценки определённого студента
 {
 	updateGradeVec();
 	
@@ -58,7 +58,7 @@ void Subject::printGrades(int studentID, int mode)
 	}
 }
 
-void Subject::grade(string groupName)
+void Subject::grade(string groupName) //Высталяет студенту оценки
 {
 	system(CLEARSCR);
 	printGroup(groupName);
@@ -82,7 +82,7 @@ void Subject::grade(string groupName)
 	printGrades(select, GENERAL_USE);
 }
 	
-void Subject::updateGradeVec()
+void Subject::updateGradeVec() //Изменяет размер вектора оценок
 {
 	vector<int> temp = {1};
 	gradeVec.resize(vecStudent.size(), temp);

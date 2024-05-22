@@ -16,7 +16,7 @@ using namespace interface;
 
 // TUTOR FUNCTIONS
 
-void Tutor::printStudentGrades(vector<Student> studentList)
+void Tutor::printStudentGrades(vector<Student> studentList) //Выводит оценки студента(функция для преподователя)
 {
 	print(studentGroups);
     chooseGroupTutorMode();
@@ -44,7 +44,7 @@ void Tutor::printStudentGrades(vector<Student> studentList)
     cout << "+-----------------------------------------------------+" << endl;
 }
 
-void Tutor::printGroupGrades(vector<Student> studentList)
+void Tutor::printGroupGrades(vector<Student> studentList) //Выводит оценки группы(функция для преподователя)
 {
 	print(studentGroups);
     chooseGroupTutorMode();
@@ -69,7 +69,7 @@ void Tutor::printGroupGrades(vector<Student> studentList)
     cout << "+-----------------------------------------------------+" << endl;
 }
 
-void Tutor::gradeStudent()
+void Tutor::gradeStudent() //Выставляет оценку ученику(для преподователя)
 {
     print(studentGroups);
     chooseGroupTutorMode();
@@ -82,9 +82,7 @@ void Tutor::gradeStudent()
 
 // ADMIN FUNCTIONS
 
-// ADD STUDENTS
-
-void Admin::addSubject(vector<Subject>& subjectList, vector<Student>& studentList)
+void Admin::addSubject(vector<Subject>& subjectList, vector<Student>& studentList) //Добавляет новый предмет(функция для администратора)
 {
     cout << "| Type in the subject name:\n> ";
 	
@@ -95,7 +93,7 @@ void Admin::addSubject(vector<Subject>& subjectList, vector<Student>& studentLis
 	subjectList.push_back(sub);
 }
 
-void Admin::addStudents(vector<Student>& studentList, vector<string>& groupList)
+void Admin::addStudents(vector<Student>& studentList, vector<string>& groupList)//Добавляет новых студентов(функция для администратора)
 {
     cout <<  "| How many students would you like to add?\n> ";
 	
@@ -153,8 +151,8 @@ void Admin::addStudents(vector<Student>& studentList, vector<string>& groupList)
     cout << "S| uccessfully added " << n << " student(s)" << endl;
 }
 
-// ADD GROUPS
-void Admin::addGroups(vector<string>& groupList)
+
+void Admin::addGroups(vector<string>& groupList) //Добавляет новых студентов(функция для администратора)
 {
     cout << "| How many groups would you like to add?\n> ";
 	
@@ -174,8 +172,8 @@ void Admin::addGroups(vector<string>& groupList)
 	cout << "Successfully added " << n << " group(s)" << endl;
 }
 
-//  ADD TUTORS
-void Admin::addTutors(vector<Tutor>& tutorList, vector<Subject>& subjectList, vector<string>& groupList, vector<Student>& studentList)
+
+void Admin::addTutors(vector<Tutor>& tutorList, vector<Subject>& subjectList, vector<string>& groupList, vector<Student>& studentList) //Добавляет новых преподователей(функция для администратора)
 {
 	print(tutorList);
     cout << "\n| How many tutors would you like to add?\n> ";
@@ -251,9 +249,9 @@ void Admin::addTutors(vector<Tutor>& tutorList, vector<Subject>& subjectList, ve
 	}
 }
 
-// ADD ADMINISTRATORS
 
-void Admin::addAdmins(vector<Admin>& adminList)
+
+void Admin::addAdmins(vector<Admin>& adminList) //Добавляет новых администраторов(функция для администратора)
 {
 	print(adminList);
     cout << "+-----------------------------------------------------+" << endl;
@@ -290,18 +288,18 @@ void Admin::addAdmins(vector<Admin>& adminList)
 
 // PRINT FUNCTIONS
 
-void print(vector<Student> studentList){
+void print(vector<Student> studentList){ //функция вывода студентов
 	system(CLEARSCR);
     std::cout << "| Here's a full student list: " << std::endl;
 	for(int i = 1; i<studentList.size(); i++) std::cout << i << ". " << studentList[i].fullName << " | Group: " << studentList[i].studentGroup << std::endl; 
 }
 
-void print(vector<string> groupList){
+void print(vector<string> groupList){ //функция вывода групп
 	system(CLEARSCR);
     cout << "| Here's a full group list: " << endl;
 	for(int i = 1; i < groupList.size(); i++) std::cout << i << ". " << groupList[i] << std::endl;	
 }
-void print(vector<Tutor> tutorList){
+void print(vector<Tutor> tutorList){ //функция вывода преподователей
 	system(CLEARSCR);
     cout << "| Here's a full tutor list: " << endl;
 	for(int i = 1; i < tutorList.size(); i++) 
@@ -311,14 +309,14 @@ void print(vector<Tutor> tutorList){
         cout << endl << "_______________________________________________________" << endl;
 	}	
 }
-void print(vector<Admin> adminList){
+void print(vector<Admin> adminList){ //функция вывода администраторов
 	system(CLEARSCR);
     std::cout << "| Here's a full admin list: " << std::endl;
 	for(int j = 1; j < adminList.size(); j++) std::cout << j << ". " << adminList[j].getName() << std::endl;
 }
 
 
-void Admin::removeStudent(vector<Student>& studentList)
+void Admin::removeStudent(vector<Student>& studentList)  //Удаление студента(функция для администратора)
 {
 	print(studentList);
 	
@@ -335,7 +333,7 @@ void Admin::removeStudent(vector<Student>& studentList)
     removing();
 }
 
-void Admin::editStudent(vector<Student>& studentList, vector<std::string>& groupList)
+void Admin::editStudent(vector<Student>& studentList, vector<std::string>& groupList) //Изменение информации о студенте(функция для администратора)
 {
 	print(studentList);
 		
@@ -387,7 +385,7 @@ void Admin::editStudent(vector<Student>& studentList, vector<std::string>& group
 	}
 }
 
-void Admin::removeGroup(vector<string>& groupList, vector<Student>& studentList, vector<Tutor>& tutorList)
+void Admin::removeGroup(vector<string>& groupList, vector<Student>& studentList, vector<Tutor>& tutorList) //Удаление группы(функция для администратора)
 {
 	print(groupList);
     removeGroupAdminMode();
@@ -431,7 +429,7 @@ void Admin::removeGroup(vector<string>& groupList, vector<Student>& studentList,
 	}
 }
 
-void Admin::editGroup(vector<Student>& studentList, vector<std::string>& groupList)
+void Admin::editGroup(vector<Student>& studentList, vector<std::string>& groupList) //Изменение информации о группе(функция для администратора)
 {
 	print(groupList);
     selectGroupToEdit();
@@ -461,7 +459,7 @@ void Admin::editGroup(vector<Student>& studentList, vector<std::string>& groupLi
 	system(CLEARSCR);
 }
 
-void Admin::removeTutor(vector<Tutor>& tutorList)
+void Admin::removeTutor(vector<Tutor>& tutorList) //Удаление преподователя(функция для администратора)
 {
 	print(tutorList);
     selectionRemove();
@@ -477,7 +475,7 @@ void Admin::removeTutor(vector<Tutor>& tutorList)
     removing();
 }
 
-void Admin::editTutor(vector<Tutor>& tutorList, vector<Subject>& subjectList, vector<string>& groupList, vector<Student>& studentList)
+void Admin::editTutor(vector<Tutor>& tutorList, vector<Subject>& subjectList, vector<string>& groupList, vector<Student>& studentList) //Изменение информации о преподователе(функция для администратора)
 {
 	print(tutorList);
     selectTutorToEdit();
@@ -551,7 +549,7 @@ void Admin::editTutor(vector<Tutor>& tutorList, vector<Subject>& subjectList, ve
 	system(CLEARSCR);
 }
 
-void Admin::removeThisAdmin(vector<Admin>& adminList)
+void Admin::removeThisAdmin(vector<Admin>& adminList) //Удаление данного администратора(функция для администратора)
 {
     selectionRemove();
 		
@@ -566,7 +564,7 @@ void Admin::removeThisAdmin(vector<Admin>& adminList)
     removing();
 }
 
-void save(vector<Subject>& subjectList, vector<Student>& studentList, vector<Tutor>& tutorList, vector<string>& groupList, vector<Admin>& adminList)
+void save(vector<Subject>& subjectList, vector<Student>& studentList, vector<Tutor>& tutorList, vector<string>& groupList, vector<Admin>& adminList) //Функция сохранения
 {
     ofstream saveFile;
     saveFile.open("save.txt",std::ofstream::out | std::ofstream::trunc);
@@ -613,7 +611,7 @@ void save(vector<Subject>& subjectList, vector<Student>& studentList, vector<Tut
     saveFile.close();
 }
 
-void load(vector<Subject>& subjectList, vector<Student>& studentList, vector<Tutor>& tutorList, vector<string>& groupList, vector<Admin>& adminList)
+void load(vector<Subject>& subjectList, vector<Student>& studentList, vector<Tutor>& tutorList, vector<string>& groupList, vector<Admin>& adminList) //Функция загрузки
 {
     ifstream saveFile("save.txt");
 
@@ -770,7 +768,7 @@ void Admin::debugLoadDefault(vector<Subject>& subjectList, vector<Student>& stud
 	tutorList.push_back(tOne);
 }
 
-void INIT_VECTORS(vector<Tutor>& tutorList, vector<Student>& studentList, vector<Subject>& subjectList, vector<Admin>& adminList, vector<string>& groupList)
+void INIT_VECTORS(vector<Tutor>& tutorList, vector<Student>& studentList, vector<Subject>& subjectList, vector<Admin>& adminList, vector<string>& groupList) //Начальная инициализация векторов
 {
 
     subjectList.clear();

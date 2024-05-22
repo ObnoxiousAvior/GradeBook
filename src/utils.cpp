@@ -9,7 +9,7 @@
 
 using namespace std;
 	
-void utils::queryInt(int& var)
+void utils::queryInt(int& var) //Запрос значения
 	{
 	while(true)
 	{

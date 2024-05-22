@@ -8,6 +8,7 @@
 #include "include/Subject.h"
 #include "include/Modes.h"
 #include "include/interface.h"
+#include "include/Utils.h"
 
 using namespace std;
 using namespace interface;
@@ -23,7 +24,7 @@ int main()
 {
 	system(CLEARSCR);
 
-	INIT_VECTORS(tutorList, studentList, subjectList, adminList, groupList);
+    INIT_VECTORS(tutorList, studentList, subjectList, adminList, groupList);
 	
 	Admin defaultAdmin("Default Admin", "admin", "admin");
 	adminList.push_back(defaultAdmin);
@@ -36,7 +37,7 @@ int main()
     selectionPannelAdmin();
 
 	int select;
-	cin >> select;
+    utils::queryVar(select);
 	
 	system(CLEARSCR);
 	

@@ -292,7 +292,7 @@ void Admin::addAdmins(vector<Admin>& adminList)
 
 void print(vector<Student> studentList){
 	system(CLEARSCR);
-    std::cout << "\n| Here's a full student list: " << std::endl;
+    std::cout << "| Here's a full student list: " << std::endl;
 	for(int i = 1; i<studentList.size(); i++) std::cout << i << ". " << studentList[i].fullName << " | Group: " << studentList[i].studentGroup << std::endl; 
 }
 
@@ -303,7 +303,7 @@ void print(vector<string> groupList){
 }
 void print(vector<Tutor> tutorList){
 	system(CLEARSCR);
-    cout << "\n| Here's a full tutor list: " << endl;
+    cout << "| Here's a full tutor list: " << endl;
 	for(int i = 1; i < tutorList.size(); i++) 
 	{
 		cout << i << ". " << tutorList[i].getFullName() << " | Subject: " << tutorList[i].getSub() << endl << "Groups: ";
@@ -313,7 +313,7 @@ void print(vector<Tutor> tutorList){
 }
 void print(vector<Admin> adminList){
 	system(CLEARSCR);
-    std::cout << "\n| Here's a full admin list: " << std::endl;
+    std::cout << "| Here's a full admin list: " << std::endl;
 	for(int j = 1; j < adminList.size(); j++) std::cout << j << ". " << adminList[j].getName() << std::endl;
 }
 
@@ -568,187 +568,177 @@ void Admin::removeThisAdmin(vector<Admin>& adminList)
 
 void save(vector<Subject>& subjectList, vector<Student>& studentList, vector<Tutor>& tutorList, vector<string>& groupList, vector<Admin>& adminList)
 {
-	ofstream saveFile;
-	saveFile.open("save.txt", std::ofstream::out);
+    ofstream saveFile;
+    saveFile.open("save.txt",std::ofstream::out | std::ofstream::trunc);
 
-	saveFile << subjectList.size() << ' ' << studentList.size() << ' ' <<  tutorList.size() <<' ' <<  adminList.size() <<' ' <<  groupList.size() << endl;
-	
-	for(int i = 1; i<subjectList.size(); i++)
-	{ 
-		saveFile << subjectList[i].getSubName() << endl;
-		std::vector<std::vector<int>> gradeVec;
-		
-		for(int j = 1; j < subjectList[i].getGradeVec().size(); j++)
-		{
-			for(int k = 0; k < subjectList[i].getGradeVec()[j].size(); k++) 
-			{
-				saveFile << subjectList[i].getGradeVec()[j][k] << ' ';
-			}
-			saveFile << endl;
-		}		
-	}
-	
-	saveFile << studentList.size() << endl;
-	
+    saveFile << subjectList.size()-1 << endl << studentList.size()-1 << endl <<  tutorList.size()-1 << endl <<  adminList.size()-1 << endl <<  groupList.size()-1 << endl;
+
     for(int i = 1; i<studentList.size(); i++) saveFile << studentList[i].fullName << endl << studentList[i].studentGroup << endl;
-	
-	saveFile << tutorList.size() << endl;
-	
+
+    for(int i = 1; i<subjectList.size(); i++)
+    {
+        saveFile << subjectList[i].getSubName() << endl;
+        std::vector<std::vector<int>> gradeVec;
+
+        for(int j = 1; j < subjectList[i].getGradeVec().size(); j++)
+        {
+            for(int k = 0; k < subjectList[i].getGradeVec()[j].size(); k++)
+            {
+                saveFile << subjectList[i].getGradeVec()[j][k] << ' ';
+            }
+            saveFile << endl;
+        }
+    }
+
     for(int i = 1; i<tutorList.size(); i++)
-	{
-		saveFile << tutorList[i].getFullName() << ' ' << tutorList[i].getSub() << endl;
-		
-		saveFile << tutorList[i].getGroupVec().size() << endl;
-		
-        for(int j = 1; j < tutorList[i].getGroupVec().size(); j++) saveFile << tutorList[i].getGroupVec()[j] << ' ';
-		saveFile << endl << tutorList[i].getLogin() << endl << tutorList[i].getPassword() << endl;
-	}
-	
-	saveFile << adminList.size() << endl;
-	
+    {
+        saveFile << tutorList[i].getFullName() << endl << tutorList[i].getSub() << endl;
+
+        saveFile << tutorList[i].getGroupVec().size()-1 << endl;
+
+        for(int j = 1; j < tutorList[i].getGroupVec().size(); j++) saveFile << tutorList[i].getGroupVec()[j] << endl;
+        saveFile << tutorList[i].getLogin() << endl << tutorList[i].getPassword() << endl;
+    }
+
     for(int i = 1; i<adminList.size(); i++)
-	{
-		saveFile << adminList[i].getName() << endl << adminList[i].getLogin() << endl << adminList[i].getPassword() << endl;
-	}
-	
+    {
+        saveFile << adminList[i].getName() << endl << adminList[i].getLogin() << endl << adminList[i].getPassword() << endl;
+    }
+
     for(int i = 1; i<groupList.size(); i++)
-	{
-		saveFile << groupList[i] << endl;
-	}
-	
-	saveFile.close();
+    {
+        saveFile << groupList[i] << endl;
+    }
+
+    saveFile.close();
 }
 
 void load(vector<Subject>& subjectList, vector<Student>& studentList, vector<Tutor>& tutorList, vector<string>& groupList, vector<Admin>& adminList)
 {
-	ifstream saveFile;
-	saveFile.open("save.txt");
-	
-	subjectList.clear();
-	studentList.clear();
-	tutorList.clear();
-	groupList.clear();
-	adminList.clear();
-	
-	INIT_VECTORS(tutorList, studentList, subjectList, adminList, groupList);	
-	
-	int subCount, stuCount, tutCount, admCount, groCount;
-	
-	saveFile >> subCount;
-	saveFile >> stuCount;
-	saveFile >> tutCount;
-	saveFile >> admCount;
-	saveFile >> groCount;
+    ifstream saveFile("save.txt");
 
+    INIT_VECTORS(tutorList, studentList, subjectList, adminList, groupList);
 
-	string trash;
-	getline(saveFile, trash);
-	
-	for(int i = 1; i < subCount; i++)
-	{
-		string subName;
-		
-		getline(saveFile,subName);
-	
-		std::vector<std::vector<int>> gradeVec;
-		
-		for(int j = 1; j < stuCount; j++)
-		{
-		
-			string line;
-			getline(saveFile, line);
-			
-			vector<int> vecc;
-			
+    int subCount, stuCount, tutCount, admCount, groCount;
+
+    saveFile >> subCount;
+    saveFile >> stuCount;
+    saveFile >> tutCount;
+    saveFile >> admCount;
+    saveFile >> groCount;
+
+    string trash;
+    getline(saveFile, trash);
+
+    for(int i = 1; i <= stuCount; i++)
+    {
+        string stuName;
+        string gruName;
+
+        getline(saveFile,stuName);
+        getline(saveFile,gruName);
+
+        Student stu{stuName, gruName};
+        studentList.push_back(stu);
+    }
+
+    for(int i = 1; i <= subCount; i++)
+    {
+        string subName;
+        getline(saveFile,subName);
+
+        vector<int> temp = {1};
+        std::vector<std::vector<int>> gradeVec;
+        gradeVec.push_back(temp);
+
+        for(int j = 1; j <= stuCount; j++)
+        {
+            string line;
+            getline(saveFile, line);
+
+            vector<int> vecInt;
+
             for(int k = 0; k<line.size(); k++)
-			{
-				if (isdigit(line[k]))
-				{
-					vecc.push_back(line[k]);
-				}
-			}		
-			gradeVec.push_back(vecc);
-		}		
-		Subject sub(subName, studentList);
-		subjectList.push_back(sub);
-		subjectList[i].setVec(gradeVec);
-	}	
-	
-	for(int i = 0; i < stuCount-1; i++)
-	{
-		string stuName;
-		string gruName;
-		
-		getline(saveFile,stuName);
-		getline(saveFile,gruName);
-		
-		Student stu{stuName, gruName};
-		studentList.push_back(stu);
-	}
-	
-	for(int i = 0; i < tutCount-1; i++)
-	{
-		string fName;
-		getline(saveFile, fName);
-		
-		string sName;
-		getline(saveFile, sName);
-		
-		int subID;
-		
+            {
+                if(isdigit(line[k]))
+                {
+                    vecInt.push_back(line[k]-'0');
+                }
+            }
+            gradeVec.push_back(vecInt);
+        }
+        Subject sub(subName, studentList);
+        subjectList.push_back(sub);
+        subjectList[i].setVec(gradeVec);
+    }
+
+    for(int i = 1; i <= tutCount; i++)
+    {
+        string fName;
+        getline(saveFile, fName);
+
+        string sName;
+        getline(saveFile, sName);
+
+        int subID;
+
         for(int j = 1; j<subjectList.size(); j++)
-		{
-			if(sName.compare(subjectList[j].getSubName())==0)
-			{
-				subID = j;
-				break;
-			}
-		}
-		
-		vector<string> groupV;
-		
-        int h{};
-		
-		for(int j = 0; j<2-1; j++)
-		{
-			string gr;
-			saveFile >> gr;
-			groupV.push_back(gr);
-		}
-		
-		string l;
-		getline(saveFile, l);
-		
-		string p;
-		getline(saveFile,p);
-		
-		Tutor tut(fName, subjectList[subID], groupV, l, p);
-		tutorList.push_back(tut);
-	}
-	
-	for(int i = 0; i < admCount-1; i++)
-	{
-		string fName;
-		getline(saveFile, fName);
-		
-		string l;
-		getline(saveFile, l);
-		
-		string p;
-		getline(saveFile,p);
-		
-		Admin adm(fName, l, p);
-		adminList.push_back(adm);
-	}
-	
-	for(int i = 0; i < groCount-1; i++)
-	{
-		string fName;
-		getline(saveFile, fName);
-		
-		groupList.push_back(fName);
-	}
-	saveFile.close();
+        {
+            if(sName.compare(subjectList[j].getSubName())==0)
+            {
+                subID = j;
+                break;
+            }
+        }
+
+        vector<string> groupV;
+
+        int h;
+        saveFile >> h;
+
+        getline(saveFile, trash);
+
+        for(int j = 1; j<=h; j++)
+        {
+            string gr;
+            getline(saveFile,gr);
+
+            groupV.push_back(gr);
+        }
+
+        string l;
+        getline(saveFile, l);
+
+        string p;
+        getline(saveFile,p);
+
+        Tutor tut(fName, subjectList[subID], groupV, l, p);
+        tutorList.push_back(tut);
+    }
+
+    for(int i = 1; i <= admCount; i++)
+    {
+        string fName;
+        getline(saveFile, fName);
+
+        string l;
+        getline(saveFile, l);
+
+        string p;
+        getline(saveFile,p);
+
+        Admin adm(fName, l, p);
+        adminList.push_back(adm);
+    }
+
+    for(int i = 1; i <= groCount; i++)
+    {
+        string fName;
+        getline(saveFile, fName);
+
+        groupList.push_back(fName);
+    }
+    saveFile.close();
 }
 
 void Admin::debugLoadDefault(vector<Subject>& subjectList, vector<Student>& studentList, vector<Tutor>& tutorList, vector<string>& groupList)
@@ -782,16 +772,23 @@ void Admin::debugLoadDefault(vector<Subject>& subjectList, vector<Student>& stud
 
 void INIT_VECTORS(vector<Tutor>& tutorList, vector<Student>& studentList, vector<Subject>& subjectList, vector<Admin>& adminList, vector<string>& groupList)
 {
+
+    subjectList.clear();
+    studentList.clear();
+    tutorList.clear();
+    groupList.clear();
+    adminList.clear();
+
 	Subject defSub("0", studentList);
 	Student defStud{"0", "0"};
-	Admin defAdm("0", "0", "0");
 	string defGroup = "0";
 	Tutor defTut("0", defSub, groupList, "0", "0");
-	
+    Admin defaultAdmin("Default Admin", "admin", "admin");
+
 	subjectList.push_back(defSub);
 	studentList.push_back(defStud);
-	adminList.push_back(defAdm);
 	groupList.push_back(defGroup);
 	tutorList.push_back(defTut);
+    adminList.push_back(defaultAdmin);
 }
 

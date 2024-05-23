@@ -1,3 +1,3 @@
 # GradeBook
 
-#The look for future
+look for the future

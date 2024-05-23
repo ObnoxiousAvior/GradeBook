@@ -5,7 +5,9 @@
 
 #include "Student.h"
 #include "Subject.h"
-
+/**
+ * @brief The User class
+ */
 class User
 {
 protected:
@@ -15,7 +17,9 @@ public:
 	std::string getLogin(){return login;};
 	std::string getPassword(){return password;};
 };
-
+/**
+ * @brief The Tutor class
+ */
 class Tutor : public User
 {
 	std::string fullName;
@@ -55,7 +59,9 @@ public:
 		}
 };
 
-
+/**
+ * @brief The Admin class
+ */
 class Admin : public User
 {
 	std::string name;

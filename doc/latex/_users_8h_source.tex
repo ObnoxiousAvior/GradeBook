@@ -1,0 +1,104 @@
+\doxysection{Users.\+h}
+\hypertarget{_users_8h_source}{}\label{_users_8h_source}\index{C:/Users/gslc209/Desktop/Gradebook/GradeBook/src/include/Users.h@{C:/Users/gslc209/Desktop/Gradebook/GradeBook/src/include/Users.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Student.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Subject.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_user}{User}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00014\ \ \ \ \ std::string\ login;}
+\DoxyCodeLine{00015\ \ \ \ \ std::string\ password;}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ std::string\ getLogin()\{\textcolor{keywordflow}{return}\ login;\};}
+\DoxyCodeLine{00018\ \ \ \ \ std::string\ getPassword()\{\textcolor{keywordflow}{return}\ password;\};}
+\DoxyCodeLine{00019\ \};}
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tutor}{Tutor}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_user}{User}}}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ std::string\ fullName;}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{class_subject}{Subject}}\&\ subject;}
+\DoxyCodeLine{00027\ \ \ \ \ std::vector<std::string>\ studentGroups\ =\ \{\textcolor{stringliteral}{"{}0"{}}\};}
+\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_tutor}{Tutor}}(std::string\ name,\ \mbox{\hyperlink{class_subject}{Subject}}\&\ sub,\ std::vector<std::string>\ groups,\ std::string\ log,\ std::string\ pass)\ :\ fullName(name),\ subject(sub)}
+\DoxyCodeLine{00030\ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<groups.size();\ i++)\ studentGroups.push\_back(groups[i]);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ login\ =\ log;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ password\ =\ pass;}
+\DoxyCodeLine{00034\ \ \ \ \ \};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ std::string\ getFullName()\ \{\textcolor{keywordflow}{return}\ fullName;\};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ std::string\ getSub()\ \{\textcolor{keywordflow}{return}\ subject.getSubName();\};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_subject}{Subject}}\&\ getSubRef()\{\textcolor{keywordflow}{return}\ subject;\};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ std::vector<std::string>\ getGroupVec()\ \{\textcolor{keywordflow}{return}\ studentGroups;\};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setName(std::string\ str)\{fullName\ =\ str;\};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setSub(\mbox{\hyperlink{class_subject}{Subject}}\&\ sub)\{subject\ =\ sub;\};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setVec(std::vector<std::string>\ vec)\{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ studentGroups.clear();}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ studentGroups.push\_back(\textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i<vec.size();\ i++)\ studentGroups.push\_back(vec[i]);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ printGroupGrades(std::vector<Student>\ studentList);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ printStudentGrades(std::vector<Student>\ studentList);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ gradeStudent();}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ operator=(\mbox{\hyperlink{class_tutor}{Tutor}}\&\ right)}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ fullName\ =\ right.getFullName();}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ subject\ =\ right.getSubRef();}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ studentGroups\ =\ right.getGroupVec();}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ login\ =\ right.getLogin();}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ password\ =\ right.getPassword();}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00065\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_admin}{Admin}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_user}{User}}}
+\DoxyCodeLine{00066\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ std::string\ name;}
+\DoxyCodeLine{00068\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{class_admin}{Admin}}(std::string\ clName,\ std::string\ log,\ std::string\ pass)\ :}
+\DoxyCodeLine{00070\ \ \ \ \ name(clName)\ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ login\ =\ log;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ password\ =\ pass;}
+\DoxyCodeLine{00073\ \ \ \ \ \};}
+\DoxyCodeLine{00074\ \ \ \ \ }
+\DoxyCodeLine{00075\ \ \ \ \ std::string\ getName()\{\textcolor{keywordflow}{return}\ name;\};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ addSubject(std::vector<Subject>\&\ subjectList,\ std::vector<Student>\&\ studentList);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ addStudents(std::vector<Student>\&\ studentList,\ std::vector<std::string>\&\ groupList);}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ removeStudent(std::vector<Student>\&\ studentList);}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ editStudent(std::vector<Student>\&\ studentList,\ std::vector<std::string>\&\ groupList);}
+\DoxyCodeLine{00082\ \ \ \ \ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ addGroups(std::vector<std::string>\&\ groupList);\ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ removeGroup(std::vector<std::string>\&\ groupList,\ std::vector<Student>\&\ studentList,\ std::vector<Tutor>\&\ tutorList);}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ editGroup(std::vector<Student>\&\ studentList,\ std::vector<std::string>\&\ groupList);}
+\DoxyCodeLine{00086\ \ \ \ \ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ addTutors(std::vector<Tutor>\&\ tutorList,\ std::vector<Subject>\&\ subjectList,\ std::vector<std::string>\&\ groupList,std::vector<Student>\&\ studentList);\ \ \ \ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{void}\ removeTutor(std::vector<Tutor>\&\ tutorList);}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ editTutor(std::vector<Tutor>\&\ tutorList,\ std::vector\ <Subject>\&\ subjectList,\ std::vector<std::string>\&\ groupList,\ std::vector<Student>\&\ studentList);}
+\DoxyCodeLine{00090\ \ \ \ \ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ addAdmins(std::vector<Admin>\&\ adminList);\ \ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ removeThisAdmin(std::vector<Admin>\&\ adminList);}
+\DoxyCodeLine{00093\ \ \ \ \ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ debugLoadDefault(std::vector<Subject>\&\ subjectList,\ std::vector<Student>\&\ studentList,\ std::vector<Tutor>\&\ tutorList,\ std::vector<std::string>\&\ groupList);}
+\DoxyCodeLine{00095\ \};}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{keywordtype}{void}\ print(std::vector<Student>\ studentList);}
+\DoxyCodeLine{00098\ \textcolor{keywordtype}{void}\ print(std::vector<std::string>\ groupList);}
+\DoxyCodeLine{00099\ \textcolor{keywordtype}{void}\ print(std::vector<Tutor>\ tutorList);}
+\DoxyCodeLine{00100\ \textcolor{keywordtype}{void}\ print(std::vector<Admin>\ adminList);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \textcolor{keywordtype}{void}\ save(std::vector<Subject>\&\ subjectList,\ std::vector<Student>\&\ studentList,\ std::vector<Tutor>\&\ tutorList,\ std::vector<std::string>\&\ groupList,\ std::vector<Admin>\&\ adminList);\ }
+\DoxyCodeLine{00103\ \textcolor{keywordtype}{void}\ load(std::vector<Subject>\&\ subjectList,\ std::vector<Student>\&\ studentList,\ std::vector<Tutor>\&\ tutorList,\ std::vector<std::string>\&\ groupList,\ std::vector<Admin>\&\ adminList);\ }
+\DoxyCodeLine{00104\ \ \ \ \ }
+\DoxyCodeLine{00105\ \textcolor{keywordtype}{void}\ INIT\_VECTORS(std::vector<Tutor>\&\ tutorList,\ std::vector<Student>\&\ studentList,\ std::vector<Subject>\&\ subjectList,\ std::vector<Admin>\&\ adminList,\ std::vector<std::string>\&\ groupList);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ }
+
+\end{DoxyCode}

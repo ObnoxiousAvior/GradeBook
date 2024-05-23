@@ -8,6 +8,9 @@
 #include "Platform.h"
 #include "interface.h"
 
+/**
+ *@brief name space utils has been created for correct input login and password
+ */
 namespace utils
 {
 	template <typename T> 

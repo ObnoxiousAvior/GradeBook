@@ -13,7 +13,7 @@ namespace interface {
     /**
      * @brief selectionPannelAdmin
      */
-    void selectionPannelAdmin();
+    void selectionPannelAdmin();///< OK
 
     /**
      * @brief removeGroupAdminMode

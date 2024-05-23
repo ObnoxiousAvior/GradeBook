@@ -1,0 +1,90 @@
+\doxysection{Admin Class Reference}
+\hypertarget{class_admin}{}\label{class_admin}\index{Admin@{Admin}}
+
+
+The \doxylink{class_admin}{Admin} class.  
+
+
+
+
+{\ttfamily \#include $<$Users.\+h$>$}
+
+
+
+Inheritance diagram for Admin\+:
+% FIG 0
+
+
+Collaboration diagram for Admin\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_admin_ac22791701200b82d33c80bea20af60cd}\label{class_admin_ac22791701200b82d33c80bea20af60cd} 
+{\bfseries Admin} (std\+::string cl\+Name, std\+::string log, std\+::string pass)
+\item 
+\Hypertarget{class_admin_abc92f2b06bfd82a913f394a3944e576b}\label{class_admin_abc92f2b06bfd82a913f394a3944e576b} 
+std\+::string {\bfseries get\+Name} ()
+\item 
+\Hypertarget{class_admin_a5b374254544a18ad198ef8ef7d4dcc7f}\label{class_admin_a5b374254544a18ad198ef8ef7d4dcc7f} 
+void {\bfseries add\+Subject} (std\+::vector$<$ \mbox{\hyperlink{class_subject}{Subject}} $>$ \&subject\+List, std\+::vector$<$ \mbox{\hyperlink{struct_student}{Student}} $>$ \&student\+List)
+\item 
+\Hypertarget{class_admin_aae628b58fba1a6f09b62b626ed80d147}\label{class_admin_aae628b58fba1a6f09b62b626ed80d147} 
+void {\bfseries add\+Students} (std\+::vector$<$ \mbox{\hyperlink{struct_student}{Student}} $>$ \&student\+List, std\+::vector$<$ std\+::string $>$ \&group\+List)
+\item 
+\Hypertarget{class_admin_ac3c9a4158621e75e88dab656baa364f5}\label{class_admin_ac3c9a4158621e75e88dab656baa364f5} 
+void {\bfseries remove\+Student} (std\+::vector$<$ \mbox{\hyperlink{struct_student}{Student}} $>$ \&student\+List)
+\item 
+\Hypertarget{class_admin_a8a1b716fc7af36bfca900af61da51891}\label{class_admin_a8a1b716fc7af36bfca900af61da51891} 
+void {\bfseries edit\+Student} (std\+::vector$<$ \mbox{\hyperlink{struct_student}{Student}} $>$ \&student\+List, std\+::vector$<$ std\+::string $>$ \&group\+List)
+\item 
+\Hypertarget{class_admin_a13a4912f61958fb8bcbe12f532a893ce}\label{class_admin_a13a4912f61958fb8bcbe12f532a893ce} 
+void {\bfseries add\+Groups} (std\+::vector$<$ std\+::string $>$ \&group\+List)
+\item 
+\Hypertarget{class_admin_a2316ce7fa4e6033caed3a32f1a47285a}\label{class_admin_a2316ce7fa4e6033caed3a32f1a47285a} 
+void {\bfseries remove\+Group} (std\+::vector$<$ std\+::string $>$ \&group\+List, std\+::vector$<$ \mbox{\hyperlink{struct_student}{Student}} $>$ \&student\+List, std\+::vector$<$ \mbox{\hyperlink{class_tutor}{Tutor}} $>$ \&tutor\+List)
+\item 
+\Hypertarget{class_admin_a10e5bc3fde4dae077e85e6edbc5f7a05}\label{class_admin_a10e5bc3fde4dae077e85e6edbc5f7a05} 
+void {\bfseries edit\+Group} (std\+::vector$<$ \mbox{\hyperlink{struct_student}{Student}} $>$ \&student\+List, std\+::vector$<$ std\+::string $>$ \&group\+List)
+\item 
+\Hypertarget{class_admin_ac25cf3358e5ce161f5d4e596ca00f06d}\label{class_admin_ac25cf3358e5ce161f5d4e596ca00f06d} 
+void {\bfseries add\+Tutors} (std\+::vector$<$ \mbox{\hyperlink{class_tutor}{Tutor}} $>$ \&tutor\+List, std\+::vector$<$ \mbox{\hyperlink{class_subject}{Subject}} $>$ \&subject\+List, std\+::vector$<$ std\+::string $>$ \&group\+List, std\+::vector$<$ \mbox{\hyperlink{struct_student}{Student}} $>$ \&student\+List)
+\item 
+\Hypertarget{class_admin_a3894833359b5d369e7c3f567e41421ea}\label{class_admin_a3894833359b5d369e7c3f567e41421ea} 
+void {\bfseries remove\+Tutor} (std\+::vector$<$ \mbox{\hyperlink{class_tutor}{Tutor}} $>$ \&tutor\+List)
+\item 
+\Hypertarget{class_admin_a88f28984c5d21a00d318881eb87bf805}\label{class_admin_a88f28984c5d21a00d318881eb87bf805} 
+void {\bfseries edit\+Tutor} (std\+::vector$<$ \mbox{\hyperlink{class_tutor}{Tutor}} $>$ \&tutor\+List, std\+::vector$<$ \mbox{\hyperlink{class_subject}{Subject}} $>$ \&subject\+List, std\+::vector$<$ std\+::string $>$ \&group\+List, std\+::vector$<$ \mbox{\hyperlink{struct_student}{Student}} $>$ \&student\+List)
+\item 
+\Hypertarget{class_admin_ae6f3c30f98a3c2bd7cab639c9ab7f70e}\label{class_admin_ae6f3c30f98a3c2bd7cab639c9ab7f70e} 
+void {\bfseries add\+Admins} (std\+::vector$<$ \mbox{\hyperlink{class_admin}{Admin}} $>$ \&admin\+List)
+\item 
+\Hypertarget{class_admin_a51e2e5228b77ef9a52b0d8c22ba14325}\label{class_admin_a51e2e5228b77ef9a52b0d8c22ba14325} 
+void {\bfseries remove\+This\+Admin} (std\+::vector$<$ \mbox{\hyperlink{class_admin}{Admin}} $>$ \&admin\+List)
+\item 
+\Hypertarget{class_admin_a816dc109f2bc75131f9887da7a524c83}\label{class_admin_a816dc109f2bc75131f9887da7a524c83} 
+void {\bfseries debug\+Load\+Default} (std\+::vector$<$ \mbox{\hyperlink{class_subject}{Subject}} $>$ \&subject\+List, std\+::vector$<$ \mbox{\hyperlink{struct_student}{Student}} $>$ \&student\+List, std\+::vector$<$ \mbox{\hyperlink{class_tutor}{Tutor}} $>$ \&tutor\+List, std\+::vector$<$ std\+::string $>$ \&group\+List)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_user}{User}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries get\+Login} ()
+\item 
+std\+::string {\bfseries get\+Password} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_user}{User}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries login}
+\item 
+std\+::string {\bfseries password}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_admin}{Admin} class. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/gslc209/\+Desktop/\+Gradebook/\+Grade\+Book/src/include/Users.\+h\end{DoxyCompactItemize}

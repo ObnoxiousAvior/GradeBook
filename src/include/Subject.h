@@ -11,11 +11,14 @@
 enum mode{FORMATTED, GENERAL_USE};
 
 /**
- * @brief The Subject class
+ * @brief class for working with subjects
+ * @author Paul
+ * @version 1.0
+ * @date 05.20.2024
  */
 class Subject
 {
-	std::string subName;
+    std::string subName;
 	std::vector<Student>& vecStudent;
 	std::vector<std::vector<int>> gradeVec;
 	

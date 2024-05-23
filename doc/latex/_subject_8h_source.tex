@@ -1,0 +1,45 @@
+\doxysection{Subject.\+h}
+\hypertarget{_subject_8h_source}{}\label{_subject_8h_source}\index{C:/Users/gslc209/Desktop/Gradebook/GradeBook/src/include/Subject.h@{C:/Users/gslc209/Desktop/Gradebook/GradeBook/src/include/Subject.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Student.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{keyword}{enum}\ mode\{FORMATTED,\ GENERAL\_USE\};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_subject}{Subject}}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ std::string\ subName;}
+\DoxyCodeLine{00022\ \ \ \ \ std::vector<Student>\&\ vecStudent;}
+\DoxyCodeLine{00023\ \ \ \ \ std::vector<std::vector<int>>\ gradeVec;}
+\DoxyCodeLine{00024\ \ \ \ \ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{class_subject}{Subject}}(std::string\ name\ ,std::vector<Student>\&\ stListRef)\ :\ subName(name),\ vecStudent(stListRef)\ \{\};}
+\DoxyCodeLine{00027\ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ std::string\ getSubName();}
+\DoxyCodeLine{00029\ \ \ \ \ std::vector<std::vector<int>>\ getGradeVec()\ \{\textcolor{keywordflow}{return}\ gradeVec;\};}
+\DoxyCodeLine{00030\ \ \ \ \ std::vector<Student>\&\ getStudRef()\ \{\textcolor{keywordflow}{return}\ vecStudent;\};}
+\DoxyCodeLine{00031\ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ setVec(std::vector<std::vector<int>>\ vec)\ \{gradeVec\ =\ vec;\};}
+\DoxyCodeLine{00033\ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ printStudents();}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ printGroup(std::string\ groupName);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ printGrades(\textcolor{keywordtype}{int}\ studentID,\ \textcolor{keywordtype}{int}\ mode);}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ grade(std::string\ groupName);}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ updateGradeVec();}
+\DoxyCodeLine{00039\ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ operator=(\mbox{\hyperlink{class_subject}{Subject}}\&\ right)}
+\DoxyCodeLine{00041\ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ subName\ =\ right.getSubName();}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ vecStudent\ =\ right.getStudRef();}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ }
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ printGroup(std::vector<Student>\ vecStudent,\ std::string\ groupName);}
+
+\end{DoxyCode}

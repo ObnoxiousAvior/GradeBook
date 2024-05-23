@@ -5,9 +5,14 @@
 #include <vector>
 
 #include "Student.h"
-
+/**
+ * @brief The mode enum
+ */
 enum mode{FORMATTED, GENERAL_USE};
 
+/**
+ * @brief The Subject class
+ */
 class Subject
 {
 	std::string subName;

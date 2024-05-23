@@ -8,6 +8,12 @@
 #include "Subject.h"
 #include "Users.h"
 
+/**
+ * @brief studentMode
+ * @param [in] studentList
+ * @param [in] subjectList
+ * @param [in] groupList
+ */
 void studentMode(std::vector<Student> studentList,
 					  std::vector<Subject> subjectList,
 					  std::vector<std::string> groupList);

@@ -93,7 +93,7 @@ void Admin::addSubject(vector<Subject>& subjectList, vector<Student>& studentLis
 	subjectList.push_back(sub);
 }
 
-void Admin::addStudents(vector<Student>& studentList, vector<string>& groupList)//Добавляет новых студентов(функция для администратора)
+void Admin::addStudents(vector<Student>& studentList, vector<string>& groupList) //Добавляет новых студентов(функция для администратора)
 {
     cout <<  "| How many students would you like to add?\n> ";
 	
